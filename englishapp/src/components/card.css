@@ -1,13 +1,15 @@
-.heroune {
+.card {
     display: flex;
     flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
     padding: 2%;
     margin: 2%;
     border: 4px solid rgb(57, 162, 59);
-    background: linear-gradient(rgb(73, 236, 168), 20%, rgb(246, 188, 211));
-    border-radius: 5%;
+    background: linear-gradient(rgb(73, 236, 168), 20%, rgb(194, 28, 94));
     text-align: center;
     font-family: "Merriweather", serif;
+    font-size: 1em;
     line-height: 160%;
     color: rgb(255, 255, 255);
     gap: 0.5rem;

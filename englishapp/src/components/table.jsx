@@ -9,7 +9,7 @@ function Card(props) {
         
          <div className="card-transcription">{props.transcription}</div> 
         
-        <div className="card-translate">{props. translate}</div> 
+        <div className="card-translate">{props.translate}</div> 
 
          </div>);
 }

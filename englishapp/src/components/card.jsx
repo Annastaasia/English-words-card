@@ -1,6 +1,6 @@
 import './card'
 
-function Card(props) {
+function Card__inner(props) {
     return (<div className="card"> 
     
         <h2 className="card-title"> {props.word}</h2> 
@@ -14,4 +14,4 @@ function Card(props) {
          </div>);
 }
 
-export default Card;
+export default Card__inner;
