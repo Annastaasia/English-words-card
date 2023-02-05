@@ -1,8 +1,8 @@
 const cards = [
     {
         number: "1",
-        word: "[æd]",
-        transcription: "att",
+        word: "add",
+        transcription: "[æd]",
         hint: "v. to put (something) with another to make it larger; to say more",
         translate: "добавлять"
     },
