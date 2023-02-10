@@ -1,8 +1,8 @@
 
 import React from 'react';
-import Card from './components/table.jsx';
-import cards from './components/card.js';
-import './components/card.css'
+import Card from './cards/table.jsx';
+import cards from './cards/card.js';
+import './cards/card.scss'
 
 
 
@@ -11,29 +11,32 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <h1>Vocabulary</h1>
+        <header className="App__header">
+          <h1 className="App__header__h1">English cards</h1>
+          <button className="App__header__game">Start</button>
         </header>
         <main>
-          <div className='cards'> {
-            cards.map((card) => <Card
-              number={
-                card.number
-              }
+          <div className='container'>
+            <div className='container__cards'> {
+              cards.map((card) => <Card
+                number={
+                  card.number
+                }
 
-              word={
-                card.word
-              }
+                word={
+                  card.word
+                }
 
-              transcription={
-                card.transcription
-              }
+                transcription={
+                  card.transcription
+                }
 
-              translate={
-                card.translate
-              }
-            ></Card>)
-          }
+                translate={
+                  card.translate
+                }
+              ></Card>)
+            }
+            </div>
           </div>
         </main>
       </div>);
