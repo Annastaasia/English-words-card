@@ -18,7 +18,8 @@ class App extends React.Component {
         <main>
           <div className='container'>
             <div className='container__cards'> {
-              cards.map((card) => <Card
+              cards.map((card, i) => <Card
+                key={i}
                 number={
                   card.number
                 }
@@ -34,6 +35,8 @@ class App extends React.Component {
                 translate={
                   card.translate
                 }
+
+                isSelected={card.isSelected}
               ></Card>)
             }
             </div>

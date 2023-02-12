@@ -4,14 +4,17 @@ const cards = [
         word: "add",
         transcription: "[æd]",
         hint: "v. to put (something) with another to make it larger; to say more",
-        translate: "добавлять"
+        translate: "добавлять",
+        isSelected: true
+
     },
     {
         number: "2",
         word: "accept",
         transcription: "[əkˈsept]",
         hint: "v. to agree to receive",
-        translate: "принимать"
+        translate: "принимать",
+
 
     },
     {

@@ -1,7 +1,13 @@
 import './card'
 
-function Card(props) {
-    return (<div className="table"> 
+//import save from './assets/image/save.png'
+
+export default function Card(props) {
+
+    const classSave = (props.isSelected? 'table_save':'table_save_none');
+    return (
+        
+    <div className="table"> 
 
 <div className="table_number">№  {props.number}</div> 
     
@@ -11,9 +17,9 @@ function Card(props) {
         
         <div className="table_translate">{props.translate}</div> 
 
-        <div className="table_buttons"> 
+        <div className='table_buttons'> 
 
-        <button className="table_save"></button>
+        <button className={`${classSave}`}></button>
 
         <button className="table_edit"></button>
 
@@ -24,4 +30,11 @@ function Card(props) {
          </div>);
 }
 
-export default Card;
+
+
+//<img src={save} alt='save' />
+
+//{ isSelected &&
+    //<button className="table_save"></button>} 
+
+    //<button className={`${classSave}`}></button>
