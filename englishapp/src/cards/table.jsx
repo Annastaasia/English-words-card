@@ -1,7 +1,5 @@
 import './card'
 
-//import save from './assets/image/save.png'
-
 export default function Card(props) {
 
     const classSave = (props.isSelected? 'table_save':'table_save_none');
@@ -29,12 +27,3 @@ export default function Card(props) {
 
          </div>);
 }
-
-
-
-//<img src={save} alt='save' />
-
-//{ isSelected &&
-    //<button className="table_save"></button>} 
-
-    //<button className={`${classSave}`}></button>

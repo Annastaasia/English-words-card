@@ -1,8 +1,9 @@
 
 import React from 'react';
 import Card from './cards/table.jsx';
-import cards from './cards/card.js';
-import './cards/card.scss'
+import cards from './utils/card.js';
+import './cards/style/card.scss';
+import './cards/style/header.scss';
 
 
 
@@ -13,7 +14,7 @@ class App extends React.Component {
       <div className="App">
         <header className="App__header">
           <h1 className="App__header__h1">English cards</h1>
-          <button className="App__header__game">Start</button>
+          <button className="App__header__game"></button>
         </header>
         <main>
           <div className='container'>

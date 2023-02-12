@@ -1,0 +1,68 @@
+@mixin fixButton {
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    height: 65px;
+    width: 65px;
+    border-radius: 15%;
+    border: 1px solid rgb(255, 255, 255);
+    cursor: pointer;
+}
+
+@mixin fixColor {
+  border: 2px solid rgb(82, 144, 205);
+  background: linear-gradient(rgb(80, 188, 177), 20%, rgb(28, 92, 194));
+  color: rgb(255, 255, 255);
+}
+
+.container {
+    margin: 5%;
+}
+
+.table {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2%;
+    text-align: center;
+    font-family: "Merriweather", serif;
+    font-size: 1.2em;
+    line-height: 160%;
+    @include fixColor;
+
+}
+
+.container__cards {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.table_save {
+    background-image: url(../assets/image/save.png);
+    @include fixButton;
+  }
+
+  .table_save_none {
+    display: none;
+  }
+
+  .table_edit {
+    background-image: url(../assets/image/edit.png);
+    @include fixButton;
+  }
+
+  .table_delete {
+    background-image: url(../assets/image/delete.png);
+    @include fixButton;
+  }
+
+  .table_buttons {
+    display: flex;
+    width: 20vw;
+    justify-content: flex-end;
+    column-gap: 1.5rem;
+  }
+
+  
+  
