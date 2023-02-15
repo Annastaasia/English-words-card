@@ -1,6 +1,6 @@
 
 import React from 'react';
-import Card from './cards/table.jsx';
+import Card from './cards/Table.jsx';
 import cards from './utils/card.js';
 import './cards/style/card.scss';
 import './cards/style/header.scss';

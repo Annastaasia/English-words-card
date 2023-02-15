@@ -1,0 +1,15 @@
+@mixin fixButton {
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    height: 65px;
+    width: 65px;
+    border-radius: 15%;
+    border: 1px solid rgb(255, 255, 255);
+    cursor: pointer;
+}
+
+@mixin fixColor {
+  border: 2px solid rgb(82, 144, 205);
+  background: linear-gradient(rgb(80, 188, 177), 20%, rgb(28, 92, 194));
+  color: rgb(255, 255, 255);
+}

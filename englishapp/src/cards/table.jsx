@@ -1,4 +1,3 @@
-import './card'
 
 export default function Card(props) {
 
@@ -7,11 +6,11 @@ export default function Card(props) {
         
     <div className="table"> 
 
-<div className="table_number">№  {props.number}</div> 
+        <div className="table_number">№  {props.number}</div> 
     
         <h2 className="table_title"> {props.word}</h2> 
         
-         <div className="table_transcription">{props.transcription}</div> 
+        <div className="table_transcription">{props.transcription}</div> 
         
         <div className="table_translate">{props.translate}</div> 
 
