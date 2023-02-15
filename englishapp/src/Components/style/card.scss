@@ -1,54 +1,66 @@
-@import './mixin.scss';
+@import "./mixin.scss";
 
 .container {
-    margin: 5%;
+  margin: 5%;
 }
 
 .table {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    padding: 2%;
-    text-align: center;
-    font-family: "Merriweather", serif;
-    font-size: 1.2em;
-    line-height: 160%;
-    @include fixColor;
-
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2%;
+  text-align: center;
+  font-family: "Merriweather", serif;
+  font-size: 1.2em;
+  line-height: 160%;
+  @include fixColor;
 }
 
 .container__cards {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .table_save {
-    background-image: url(../assets/image/save.png);
-    @include fixButton;
-  }
+  background-image: url(../assets/image/save.png);
+  @include fixButton;
+}
 
-  .table_save_none {
-    display: none;
-  }
+.table_save:hover {
+  height: 70px;
+  width: 70px;
+}
 
-  .table_edit {
-    background-image: url(../assets/image/edit.png);
-    @include fixButton;
-  }
+.table_save_none {
+  display: none;
+}
 
-  .table_delete {
-    background-image: url(../assets/image/delete.png);
-    @include fixButton;
-  }
+.table_edit {
+  background-image: url(../assets/image/edit.png);
+  @include fixButton;
+}
 
-  .table_buttons {
-    display: flex;
-    width: 20vw;
-    justify-content: flex-end;
-    column-gap: 1.5rem;
-  }
+.table_edit:hover {
+  height: 70px;
+  width: 70px;
+}
 
-  
-  
+.table_delete {
+  background-image: url(../assets/image/delete.png);
+  @include fixButton;
+}
+
+.table_delete:hover {
+  height: 70px;
+  width: 70px;
+}
+
+.table_buttons {
+  display: flex;
+  width: 20vw;
+  justify-content: flex-end;
+  align-items: center;
+  column-gap: 1.5rem;
+}

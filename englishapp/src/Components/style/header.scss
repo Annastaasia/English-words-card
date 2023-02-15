@@ -1,22 +1,27 @@
-@import './mixin.scss';
+@import "./mixin.scss";
 
-.App__header{
-    margin: 5%;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    column-gap: 1.5rem;
-    padding: 1% 2%;
-    @include fixColor;
+.App__header {
+  margin: 5%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  column-gap: 1.5rem;
+  padding: 1% 2%;
+  @include fixColor;
 
-    h1 {color: rgb(255, 255, 255);
-        font-family: "Merriweather", serif;
-    }
+  h1 {
+    color: rgb(255, 255, 255);
+    font-family: "Merriweather", serif;
+  }
 
-    button{
-        background-image: url(../assets/image/start.png);
-        @include fixButton;
-        margin-left: 33vw;
-    }
+  button {
+    background-image: url(../assets/image/start.png);
+    @include fixButton;
+    margin-left: 33vw;
+  }
+
+  button:hover {
+    height: 70px;
+    width: 70px;
+  }
 }
-
