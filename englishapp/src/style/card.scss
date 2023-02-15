@@ -29,8 +29,8 @@
 }
 
 .table_save:hover {
-  height: 70px;
-  width: 70px;
+  height: 68px;
+  width: 68px;
 }
 
 .table_save_none {
@@ -43,8 +43,8 @@
 }
 
 .table_edit:hover {
-  height: 70px;
-  width: 70px;
+  height: 68px;
+  width: 68px;
 }
 
 .table_delete {
@@ -53,14 +53,14 @@
 }
 
 .table_delete:hover {
-  height: 70px;
-  width: 70px;
+  height: 68px;
+  width: 68px;
 }
 
 .table_buttons {
   display: flex;
-  width: 20vw;
+  width: 18vw;
   justify-content: flex-end;
   align-items: center;
-  column-gap: 1.5rem;
+  column-gap: 2rem;
 }

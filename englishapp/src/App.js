@@ -3,8 +3,8 @@ import React from 'react';
 import Card from './Components/Table.jsx';
 import Header from './Components/Header.jsx';
 import cards from './utils/card.js';
-import './Components/style/card.scss';
-import './Components/style/header.scss';
+import './style/card.scss';
+import './style/header.scss';
 
 
 
