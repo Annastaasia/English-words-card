@@ -1,9 +1,9 @@
 
 import React from 'react';
-import Card from './cards/Table.jsx';
+import Card from './Components/Table.jsx';
 import cards from './utils/card.js';
-import './cards/style/card.scss';
-import './cards/style/header.scss';
+import './Components/style/card.scss';
+import './Components/style/header.scss';
 
 
 
