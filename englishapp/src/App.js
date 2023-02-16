@@ -2,6 +2,7 @@
 import React from 'react';
 import Card from './Components/Table.jsx';
 import Header from './Components/Header.jsx';
+import CardInner from './Components/Card.jsx';
 import cards from './utils/card.js';
 import './style/card.scss';
 import './style/header.scss';
@@ -39,6 +40,23 @@ class App extends React.Component {
 
                 isSelected={card.isSelected}
               ></Card>)
+            }
+            </div>
+            <div className='container__onecard'> {
+              cards.map((card, i) => <CardInner
+                key={i}
+                word={
+                  card.word
+                }
+
+                transcription={
+                  card.transcription
+                }
+
+                hint={
+                  card.hint
+                }
+              ></CardInner>)
             }
             </div>
           </div>

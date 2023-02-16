@@ -64,3 +64,25 @@
   align-items: center;
   column-gap: 2rem;
 }
+
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  font-family: "Merriweather", serif;
+  font-size: 1.2em;
+  line-height: 160%;
+  @include fixColor;
+  margin: 20% 36% 10% 36%;
+  padding: 2% 4% 4% 4%;
+  row-gap: 3rem;
+  border-radius: 15%;
+}
+
+.container__onecard {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}

@@ -1,16 +1,17 @@
+function CardInner(props) {
+  return (
+    <div className="card">
+      <h2 className="card-title"> {props.word}</h2>
 
-function Card__inner(props) {
-    return (<div className="card"> 
-    
-        <h2 className="card-title"> {props.word}</h2> 
-        
-        <div className="card-transcription">Transcription: {props.transcription}</div> 
-        
-        <div className="card-hint"> Hint: {props.hint}</div> 
+      <div className="card-transcription">
+        Transcription: {props.transcription}
+      </div>
 
-        <button className="card-add">I know this word</button>
+      <div className="card-hint"> Hint: {props.hint}</div>
 
-         </div>);
+      <button className="card-add">I know this word</button>
+    </div>
+  );
 }
 
-export default Card__inner;
+export default CardInner;
