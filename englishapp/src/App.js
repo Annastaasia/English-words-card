@@ -38,7 +38,6 @@ class App extends React.Component {
                   card.translate
                 }
 
-                isSelected={card.isSelected}
               ></Card>)
             }
             </div>
@@ -56,6 +55,11 @@ class App extends React.Component {
                 hint={
                   card.hint
                 }
+
+                translate={
+                  card.translate
+                }
+
               ></CardInner>)
             }
             </div>

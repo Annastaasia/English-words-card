@@ -5,7 +5,6 @@ const cards = [
         transcription: "[æd]",
         hint: "v. to put (something) with another to make it larger; to say more",
         translate: "добавлять",
-        isSelected: true
 
     },
     {

@@ -86,3 +86,16 @@
   flex-direction: column;
   justify-content: space-between;
 }
+
+.card-answer {
+  height: 65px;
+  width: 15vw;
+  border-radius: 15%;
+  text-align: center;
+  font-family: "Merriweather", serif;
+  font-size: 1.1em;
+  border: 2px solid rgb(255, 255, 255);
+  background: linear-gradient(rgb(80, 188, 177), 20%, rgb(255, 255, 255));
+  color: rgb(28, 92, 194);
+  cursor: pointer;
+}

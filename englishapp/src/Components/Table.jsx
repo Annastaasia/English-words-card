@@ -1,28 +1,33 @@
+import React, { useState } from "react";
 
 export default function Card(props) {
+  const [pressed, setPressed] = useState(false);
 
-    const classSave = (props.isSelected? 'table_save':'table_save_none');
-    return (
-        
-    <div className="table"> 
+  const handleChange = () => {
+    setPressed(!pressed);
+  };
 
-        <div className="table_number">№  {props.number}</div> 
-    
-        <h2 className="table_title"> {props.word}</h2> 
-        
-        <div className="table_transcription">{props.transcription}</div> 
-        
-        <div className="table_translate">{props.translate}</div> 
+  return (
+    <div className="table" onClick={handleChange}>
+      <div className="table_number">№ {props.number}</div>
 
-        <div className='table_buttons'> 
+      <h2 className="table_title"> {props.word}</h2>
 
-        <button className={`${classSave}`}></button>
+      <p className="table_transcription">{props.transcription}</p>
+
+      <div className="table_translate">{props.translate}</div>
+
+      <div className="table_buttons">
+        {pressed ? (
+          <button className="table_save"></button>
+        ) : (
+          <button className="table_save_none"></button>
+        )}
 
         <button className="table_edit"></button>
 
         <button className="table_delete"></button>
-
-        </div>
-
-         </div>);
+      </div>
+    </div>
+  );
 }
