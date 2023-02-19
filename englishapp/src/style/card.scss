@@ -1,4 +1,4 @@
-@import "./mixin.scss";
+@import "./variable.module.scss";
 
 .container {
   margin: 5%;
@@ -57,6 +57,16 @@
   width: 68px;
 }
 
+.table_close {
+  background-image: url(../assets/image/close.png);
+  @include fixButton;
+}
+
+.table_close:hover {
+  height: 68px;
+  width: 68px;
+}
+
 .table_buttons {
   display: flex;
   width: 18vw;
@@ -98,4 +108,8 @@
   background: linear-gradient(rgb(80, 188, 177), 20%, rgb(255, 255, 255));
   color: rgb(28, 92, 194);
   cursor: pointer;
+}
+
+.table_input {
+  height: 5vh;
 }
