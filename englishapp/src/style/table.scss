@@ -1,0 +1,28 @@
+@import "./variable.module.scss";
+
+.container {
+  margin: 5%;
+}
+
+.table {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2%;
+  text-align: center;
+  font-family: "Merriweather", serif;
+  font-size: 1.2em;
+  line-height: 160%;
+  @include fixColor;
+}
+
+.container__cards {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.table_input {
+  height: 4vh;
+}

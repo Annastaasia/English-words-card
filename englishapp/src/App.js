@@ -4,8 +4,7 @@ import Card from './Components/Table.jsx';
 import Header from './Components/Header.jsx';
 import CardInner from './Components/Card.jsx';
 import cards from './utils/card.js';
-import './style/card.scss';
-import './style/header.scss';
+import './style/allstyle.scss';
 
 
 

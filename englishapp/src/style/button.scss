@@ -1,0 +1,49 @@
+@import "./variable.module.scss";
+
+.table_save {
+  background-image: url(../assets/image/save.png);
+  @include fixButton;
+}
+
+.table_save:hover {
+  height: 68px;
+  width: 68px;
+}
+
+.table_edit {
+  background-image: url(../assets/image/edit.png);
+  @include fixButton;
+}
+
+.table_edit:hover {
+  height: 68px;
+  width: 68px;
+}
+
+.table_delete {
+  background-image: url(../assets/image/delete.png);
+  @include fixButton;
+}
+
+.table_delete:hover {
+  height: 68px;
+  width: 68px;
+}
+
+.table_close {
+  background-image: url(../assets/image/close.png);
+  @include fixButton;
+}
+
+.table_close:hover {
+  height: 68px;
+  width: 68px;
+}
+
+.table_buttons {
+  display: flex;
+  width: 18vw;
+  justify-content: flex-end;
+  align-items: center;
+  column-gap: 2rem;
+}
