@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-export default function CardInner(props) {
+export default function Card(props) {
   const [pressed, setPressed] = useState(false);
 
   const handleChange = () => {

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-export default function Card(props) {
+export default function Table(props) {
   const [pressed, setPressed] = useState(false);
 
   const handleChange = () => {

@@ -1,8 +1,8 @@
 
 import React from 'react';
-import Card from './Components/Table.jsx';
-import Header from './Components/Header.jsx';
-import CardInner from './Components/Card.jsx';
+import Table from './components/Table.jsx';
+import Header from './components/Header.jsx';
+import Card from './components/Card.jsx';
 import cards from './utils/card.js';
 import './style/allstyle.scss';
 
@@ -13,55 +13,51 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <header>
-          <Header />
-        </header>
+        <Header />
         <main>
-          <div className='container'>
-            <div className='container__cards'> {
-              cards.map((card, i) => <Card
-                key={i}
-                number={
-                  card.number
-                }
+          <div className='container__cards'> {
+            cards.map((card, i) => <Table
+              key={i}
+              number={
+                card.number
+              }
 
-                word={
-                  card.word
-                }
+              word={
+                card.word
+              }
 
-                transcription={
-                  card.transcription
-                }
+              transcription={
+                card.transcription
+              }
 
-                translate={
-                  card.translate
-                }
+              translate={
+                card.translate
+              }
 
-              ></Card>)
-            }
-            </div>
-            <div className='container__onecard'> {
-              cards.map((card, i) => <CardInner
-                key={i}
-                word={
-                  card.word
-                }
+            />)
+          }
+          </div>
+          <div className='container__onecard'> {
+            cards.map((card, i) => <Card
+              key={i}
+              word={
+                card.word
+              }
 
-                transcription={
-                  card.transcription
-                }
+              transcription={
+                card.transcription
+              }
 
-                hint={
-                  card.hint
-                }
+              hint={
+                card.hint
+              }
 
-                translate={
-                  card.translate
-                }
+              translate={
+                card.translate
+              }
 
-              ></CardInner>)
-            }
-            </div>
+            />)
+          }
           </div>
         </main>
       </div>);
