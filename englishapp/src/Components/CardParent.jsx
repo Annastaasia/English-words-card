@@ -1,24 +1,34 @@
 import React from "react";
-import CardMap from "./components/CardMap.jsx";
+import cards from "../utils/card";
 
-class Parent extends React.Component {
-  state = {
-    card: [0],
-  };
+class CardParent extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      activeIndex: cards[0],
+    };
+  }
 
-  handleCallback = (childData) => {
-    this.setState({ card: childData });
+  tick = () => {
+    let activeIndex = this.state.activeIndex;
+    if (activeIndex === this.props.cards.length - 1) {
+      activeIndex = 0;
+    } else {
+      activeIndex++;
+    }
+    this.setState({
+      activeIndex,
+    });
   };
 
   render() {
-    const { card } = this.state;
     return (
       <div>
-        <div> {card}</div>
-        <CardMap parentCallback={this.handleCallback} />
+        {this.props.cards[this.state.activeIndex]}
+        <button onClick={this.tick}>show Next</button>
       </div>
     );
   }
 }
 
-export default Parent;
+export default CardParent;

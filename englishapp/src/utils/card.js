@@ -1,6 +1,7 @@
 const cards = [
     {
         number: "1",
+        id: 12111,
         word: "add",
         transcription: "[æd]",
         hint: "v. to put (something) with another to make it larger; to say more",
@@ -9,6 +10,7 @@ const cards = [
     },
     {
         number: "2",
+        id: 12112,
         word: "accept",
         transcription: "[əkˈsept]",
         hint: "v. to agree to receive",
@@ -18,6 +20,7 @@ const cards = [
     },
     {
         number: "3",
+        id: 12113,
         word: "betray",
         transcription: "[bɪˈtreɪ]",
         hint: "v. to turn against; to be false to",
@@ -26,6 +29,7 @@ const cards = [
     },
     {
         number: "4",
+        id: 12114,
         word: "cause",
         transcription: "[kɔːz]",
         hint: "v. to make happen; n. the thing or person that produces a result",
@@ -34,6 +38,7 @@ const cards = [
     },
     {
         number: "5",
+        id: 12115,
         word: "declare",
         transcription: "[dɪˈkleə]",
         hint: "v. to say; to make a statement",
@@ -42,6 +47,7 @@ const cards = [
     },
     {
         number: "6",
+        id: 12116,
         word: "elect",
         transcription: "[ɪˈlekt]",
         hint: "v. to choose by voting",
