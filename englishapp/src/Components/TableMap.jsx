@@ -7,7 +7,8 @@ export default function TableMap() {
       <div className="container__cards">
         {cards.map((card, i) => (
           <Table
-            key={i}
+            num={i + 1}
+            key={card.id}
             number={card.number}
             word={card.word}
             transcription={card.transcription}

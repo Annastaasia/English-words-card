@@ -1,25 +1,33 @@
-import React, { useState } from "react";
-import cards from "../utils/card.js";
+import React, { useEffect, useState } from "react";
+import Array from "../utils/card.js";
 
 export default function Card() {
   const [pressed, setPressed] = useState(false);
+  const [word, setWord] = useState(Array[0]);
+
+  useEffect(() => {
+    wordGenerate();
+  }, []);
 
   const handleChange = () => {
     setPressed(!pressed);
   };
 
-  const [word, setWord] = useState(cards[0]);
-
-  const arrayRandElement = (arr) => {
-    let rand = Math.floor(Math.random() * arr.length);
-    return arr[rand];
+  const wordGenerate = () => {
+    const randomNumber = Math.floor(Math.random() * Array.length);
+    //return arr[randomNumber];
+    setWord(Array[randomNumber]);
   };
 
+  // const nextWord = () => {
+  //   let randomword = {};
+  //   randomword = arrayRandElement(cards);
+  //   console.log(randomword);
+  //   setWord(word === randomword);
+  // };
+
   const nextWord = () => {
-    let randomword = {};
-    randomword = arrayRandElement(cards);
-    console.log(randomword);
-    setWord(word === randomword);
+    wordGenerate();
   };
 
   return (
