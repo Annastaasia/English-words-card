@@ -4,6 +4,8 @@ import Array from "../utils/card.js";
 export default function Card() {
   const [pressed, setPressed] = useState(false);
   const [word, setWord] = useState(Array[0]);
+  const [index, setIndex] = useState(0);
+  let onecard = Array[index];
 
   useEffect(() => {
     wordGenerate();
@@ -15,16 +17,23 @@ export default function Card() {
 
   const wordGenerate = () => {
     const randomNumber = Math.floor(Math.random() * Array.length);
-    //return arr[randomNumber];
     setWord(Array[randomNumber]);
   };
 
-  // const nextWord = () => {
-  //   let randomword = {};
-  //   randomword = arrayRandElement(cards);
-  //   console.log(randomword);
-  //   setWord(word === randomword);
-  // };
+  const handleClick = (direction) => {
+    let newIndex = index;
+
+    direction === "next" ? ++newIndex : --newIndex;
+
+    if (newIndex >= Array.length) {
+      newIndex = 0;
+    }
+
+    if (newIndex < 0) {
+      newIndex = Array.length - 1;
+    }
+    setIndex(newIndex);
+  };
 
   const nextWord = () => {
     wordGenerate();
@@ -33,7 +42,8 @@ export default function Card() {
   return (
     <>
       <div>
-        <div className="card">
+        <button onClick={() => handleClick("prev")}></button>
+        <div className="card" {...onecard}>
           <h2 className="card-title"> {word.word}</h2>
 
           <div className="card-transcription">
@@ -53,6 +63,7 @@ export default function Card() {
         <div>
           <button onClick={nextWord}>Next word</button>
         </div>
+        <button onClick={() => handleClick("next")}></button>
       </div>
     </>
   );
