@@ -1,70 +1,87 @@
-import React, { useEffect, useState } from "react";
-import Array from "../utils/card.js";
+import React, { useState, useEffect } from "react";
+import cards from "../utils/card.js";
 
-export default function Card() {
+function Card() {
   const [pressed, setPressed] = useState(false);
-  const [word, setWord] = useState(Array[0]);
+  //const [word, setWord] = useState(cards[0]);
   const [index, setIndex] = useState(0);
-  let onecard = Array[index];
+  let onecard = cards[index];
 
-  useEffect(() => {
-    wordGenerate();
-  }, []);
+  // useEffect(() => {
+  //   wordGenerate();
+  // }, []);
 
   const handleChange = () => {
     setPressed(!pressed);
   };
 
-  const wordGenerate = () => {
-    const randomNumber = Math.floor(Math.random() * Array.length);
-    setWord(Array[randomNumber]);
+  // const wordGenerate = () => {
+  //   let randomNumber = Math.floor(Math.random() * cards.length);
+  //   //setIndex(cards[randomNumber]);
+  //   setIndex(cards[randomNumber]);
+  // };
+
+  const nextClick = () => {
+    if (index + 1 >= cards.length) {
+      setIndex(0);
+    } else setIndex(index + 1);
   };
 
-  const handleClick = (direction) => {
-    let newIndex = index;
-
-    direction === "next" ? ++newIndex : --newIndex;
-
-    if (newIndex >= Array.length) {
-      newIndex = 0;
-    }
-
-    if (newIndex < 0) {
-      newIndex = Array.length - 1;
-    }
-    setIndex(newIndex);
+  const prevClick = () => {
+    if (index - 1 < 0) {
+      setIndex(cards.length - 1);
+    } else setIndex(index - 1);
   };
 
-  const nextWord = () => {
-    wordGenerate();
-  };
+  // const handleClick = (direction) => {
+  //   let newIndex = index;
+
+  //   direction === "next" ? ++newIndex : --newIndex;
+
+  //   if (newIndex >= Array.length) {
+  //     newIndex = 0;
+  //   }
+
+  //   if (newIndex < 0) {
+  //     newIndex = Array.length - 1;
+  //   }
+  //   setIndex(newIndex);
+  // };
+
+  // const nextWord = () => {
+  //   wordGenerate();
+  // };
 
   return (
     <>
-      <div>
-        <button onClick={() => handleClick("prev")}></button>
-        <div className="card" {...onecard}>
-          <h2 className="card-title"> {word.word}</h2>
+      <main>
+        <div className="container__onecard">
+          <button onClick={nextClick}></button>
+          <div className="card" {...index}>
+            <h2 className="card-title"> {onecard.word}</h2>
 
-          <div className="card-transcription">
-            Transcription: {word.transcription}
+            <div className="card-transcription">
+              Transcription: {onecard.transcription}
+            </div>
+
+            <div className="card-hint"> Hint: {onecard.hint}</div>
+
+            <div onClick={handleChange}>
+              {pressed ? (
+                <div className="table_translate">{onecard.translate}</div>
+              ) : (
+                <button className="card-answer">I don`t know this word</button>
+              )}
+            </div>
           </div>
-
-          <div className="card-hint"> Hint: {word.hint}</div>
-
-          <div onClick={handleChange}>
-            {pressed ? (
-              <div className="table_translate">{word.translate}</div>
-            ) : (
-              <button className="card-answer">I don`t know this word</button>
-            )}
+          <div>
+            <button>Next word</button>
           </div>
+          <button onClick={prevClick}></button>
         </div>
-        <div>
-          <button onClick={nextWord}>Next word</button>
-        </div>
-        <button onClick={() => handleClick("next")}></button>
-      </div>
+      </main>
     </>
   );
 }
+
+export default Card;
