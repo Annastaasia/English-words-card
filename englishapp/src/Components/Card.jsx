@@ -1,30 +1,21 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import cards from "../utils/card.js";
 
 function Card() {
   const [pressed, setPressed] = useState(false);
-  //const [word, setWord] = useState(cards[0]);
   const [index, setIndex] = useState(0);
+  const [counter, setCounter] = useState(0);
   let onecard = cards[index];
-
-  // useEffect(() => {
-  //   wordGenerate();
-  // }, []);
 
   const handleChange = () => {
     setPressed(!pressed);
   };
 
-  // const wordGenerate = () => {
-  //   let randomNumber = Math.floor(Math.random() * cards.length);
-  //   //setIndex(cards[randomNumber]);
-  //   setIndex(cards[randomNumber]);
-  // };
-
   const nextClick = () => {
     if (index + 1 >= cards.length) {
       setIndex(0);
     } else setIndex(index + 1);
+    handleCount();
   };
 
   const prevClick = () => {
@@ -33,30 +24,17 @@ function Card() {
     } else setIndex(index - 1);
   };
 
-  // const handleClick = (direction) => {
-  //   let newIndex = index;
-
-  //   direction === "next" ? ++newIndex : --newIndex;
-
-  //   if (newIndex >= Array.length) {
-  //     newIndex = 0;
-  //   }
-
-  //   if (newIndex < 0) {
-  //     newIndex = Array.length - 1;
-  //   }
-  //   setIndex(newIndex);
-  // };
-
-  // const nextWord = () => {
-  //   wordGenerate();
-  // };
+  const handleCount = () => {
+    setCounter(counter + 1);
+  };
 
   return (
     <>
       <main>
         <div className="container__onecard">
-          <button onClick={nextClick}></button>
+          <button className="card-answer" onClick={prevClick}>
+            Prev word
+          </button>
           <div className="card" {...index}>
             <h2 className="card-title"> {onecard.word}</h2>
 
@@ -74,14 +52,30 @@ function Card() {
               )}
             </div>
           </div>
-          <div>
-            <button>Next word</button>
-          </div>
-          <button onClick={prevClick}></button>
+          <button className="card-answer" onClick={nextClick}>
+            Next word
+          </button>
         </div>
+        <div className="card-counter">{counter + "/" + cards.length}</div>
       </main>
     </>
   );
 }
 
 export default Card;
+
+///////////////// Math random ///////////////
+//const [word, setWord] = useState(cards[0]);
+
+// useEffect(() => {
+//   wordGenerate();
+// }, []);
+
+// const wordGenerate = () => {
+//   let randomNumber = Math.floor(Math.random() * cards.length);
+//   setWord(cards[randomNumber]);
+// };
+
+// const nextWord = () => {
+//   wordGenerate();
+// };
