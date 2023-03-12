@@ -35,4 +35,4 @@
 **Anastasiya Shitenkova** – (LinkedIn) *https://www.linkedin.com/in/anastasiya-shitenkova/* – (Telegram) - *https://t.me/Nemezida_Ok*
 
 ## Result:
-https://gulkovva19.github.io/Mogu-Travel/
+https://annastaasia.github.io/English-words-card/
