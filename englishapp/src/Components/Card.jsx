@@ -4,7 +4,7 @@ import cards from "../utils/card.js";
 function Card() {
   const [pressed, setPressed] = useState(false);
   const [index, setIndex] = useState(0);
-  const [counter, setCounter] = useState(0);
+  const [counter, setCounter] = useState(1);
   const onecard = cards[index];
 
   const handleChange = () => {

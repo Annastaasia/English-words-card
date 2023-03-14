@@ -4,7 +4,7 @@ const cards = [
     id: "11343",
     word: "add",
     transcription: "[æd]",
-    hint: "v. to put (something) with another to make it larger; to say more",
+    hint: "v. to put (something) with another to make it larger",
     translate: "добавлять",
 
   },
