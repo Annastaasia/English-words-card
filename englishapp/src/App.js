@@ -3,15 +3,12 @@ import {
   BrowserRouter as Router,
   Routes,
   Route,
-  Link
 } from "react-router-dom";
-//import Header from "./components/Header.jsx";
+import Header from "./components/Header.jsx";
 import TableMap from "./components/TableMap.jsx";
-//import CardMap from './components/CardMap.jsx';
 import Card from "./components/Card.jsx";
 import "./style/allstyle.scss";
-import mainLogo from "./assets/image/logo.png";
-
+import NoMatch from "./components/NoMatch/NoMatch";
 
 
 
@@ -19,19 +16,11 @@ export default function App() {
   return (
     <Router>
       <div className="App">
-        <header>
-          <div className="App__header">
-            <Link to="/"><img src={mainLogo} alt="logo" className="App__header__logo" /></Link>
-            <h1 className="App__header__h1">English cards</h1>
-            <div className="App__header__buttons">
-              <Link to="/cards"><button className="App__header__game"></button></Link>
-              <Link to="/"><button className="App__header__home"></button></Link>
-            </div>
-          </div>
-        </header>
+        <Header />
         <Routes>
-          <Route path="/cards" element={<Card />} />
-          <Route path="/" element={<TableMap />} />
+          <Route exact path="/cards" element={<Card />} />
+          <Route exact path="/English-words-card" element={<TableMap />} />
+          <Route path="*" element={<NoMatch />} />
         </Routes>
       </div >
     </Router>);

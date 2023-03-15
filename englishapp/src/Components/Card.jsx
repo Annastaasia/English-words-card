@@ -22,10 +22,15 @@ function Card() {
     if (index - 1 < 0) {
       setIndex(cards.length - 1);
     } else setIndex(index - 1);
+    handleCountMin();
   };
 
   const handleCount = () => {
     setCounter(counter + 1);
+  };
+
+  const handleCountMin = () => {
+    setCounter(counter - 1);
   };
 
   return (
