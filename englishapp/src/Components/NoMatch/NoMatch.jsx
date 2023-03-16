@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import noMatch from "../../assets/image/404.png";
 
 export default function NoMatch() {
