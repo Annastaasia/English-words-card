@@ -19,12 +19,13 @@ header {
 
   h1 {
     color: rgb(255, 255, 255);
+    font-size: 4vw;
     font-family: "Merriweather", serif;
   }
 
   button:hover {
-    height: 70px;
-    width: 70px;
+    //height: 70px;
+    //width: 70px;
     box-shadow: 10%;
   }
 }

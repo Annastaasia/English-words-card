@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import cards from "../utils/card.js";
+import { motion } from "framer-motion";
 
 function Card() {
   const [pressed, setPressed] = useState(false);
@@ -40,7 +41,13 @@ function Card() {
           <button className="card-answer" onClick={prevClick}>
             Prev word
           </button>
-          <div className="card" {...index}>
+          <motion.div
+            className="card"
+            {...index}
+            initial={{ opacity: 0, scale: 2 }}
+            animate={{ opacity: 1, scale: 1, rotate: 360 }}
+            transition={{ duration: 1 }}
+          >
             <h2 className="card-title"> {onecard.word}</h2>
 
             <div className="card-transcription">
@@ -56,7 +63,7 @@ function Card() {
                 <button className="card-answer">I don`t know this word</button>
               )}
             </div>
-          </div>
+          </motion.div>
           <button className="card-answer" onClick={nextClick}>
             Next word
           </button>

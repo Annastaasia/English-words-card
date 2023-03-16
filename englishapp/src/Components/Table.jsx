@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { motion } from "framer-motion";
 
 export default function Table(props) {
   const [pressed, setPressed] = useState(false);
@@ -8,7 +9,12 @@ export default function Table(props) {
   };
 
   return (
-    <div className="table">
+    <motion.div
+      className="table"
+      initial={{ opacity: 0, scale: 3 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ duration: 1 }}
+    >
       <div className="table_number">№ {props.number}</div>
 
       {pressed ? (
@@ -38,6 +44,6 @@ export default function Table(props) {
           </div>
         </>
       )}
-    </div>
+    </motion.div>
   );
 }
