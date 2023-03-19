@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import mainLogo from "../assets/image/logo.png";
+import mainLogo from "../../assets/image/logo.png";
 import { motion } from "framer-motion";
 
 function Header() {

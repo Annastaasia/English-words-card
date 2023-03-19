@@ -1,4 +1,4 @@
-import Table from "./Table.jsx";
+import Table from "./Table/Table.jsx";
 import cards from "../utils/card.js";
 
 export default function TableMap() {

@@ -1,4 +1,4 @@
-@import "./variable.module.scss";
+@import "../../style/variable.module.scss";
 
 header {
   position: sticky;
@@ -23,20 +23,26 @@ header {
     font-family: "Merriweather", serif;
   }
 
-  button:hover {
+  button:hover,
+  button:active {
     //height: 70px;
     //width: 70px;
     box-shadow: 10%;
   }
+
+  button:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgb(117, 179, 218);
+  }
 }
 
 .App__header__game {
-  background-image: url(../assets/image/start.png);
+  background-image: url(../../assets/image/start.png);
   @include fixButton;
 }
 
 .App__header__home {
-  background-image: url(../assets/image/home.png);
+  background-image: url(../../assets/image/home.png);
   @include fixButton;
   margin-left: 2vw;
 }

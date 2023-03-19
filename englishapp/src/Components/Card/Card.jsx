@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import cards from "../utils/card.js";
+import cards from "../../utils/card.js";
 import { motion } from "framer-motion";
 
 function Card() {

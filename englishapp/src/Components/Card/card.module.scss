@@ -1,4 +1,4 @@
-@import "./variable.module.scss";
+@import "../../style/variable.module.scss";
 
 .card {
   display: flex;
@@ -25,7 +25,7 @@
 }
 
 .card-answer {
-  height: 65px;
+  height: 8vh;
   width: 15vw;
   border-radius: 5%;
   text-align: center;
@@ -35,6 +35,17 @@
   background: linear-gradient(rgb(80, 188, 177), 20%, rgb(255, 255, 255));
   color: rgb(28, 92, 194);
   cursor: pointer;
+}
+
+.card-answer:hover {
+  height: 9vh;
+  width: 16vw;
+  box-shadow: 20%;
+}
+
+.card-answer:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgb(117, 179, 218);
 }
 
 .card-counter {

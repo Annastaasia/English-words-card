@@ -40,4 +40,9 @@
     width: 16vw;
     box-shadow: 20%;
   }
+
+  button:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgb(117, 179, 218);
+  }
 }

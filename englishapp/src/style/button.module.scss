@@ -5,9 +5,20 @@
   @include fixButton;
 }
 
-.table_save:hover {
+.table_save:hover,
+.table_edit:hover,
+.table_delete:hover,
+.table_close:hover {
   height: 68px;
   width: 68px;
+}
+
+.table_save:focus,
+.table_edit:focus,
+.table_delete:focus,
+.table_close:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgb(117, 179, 218);
 }
 
 .table_edit {
@@ -15,29 +26,14 @@
   @include fixButton;
 }
 
-.table_edit:hover {
-  height: 68px;
-  width: 68px;
-}
-
 .table_delete {
   background-image: url(../assets/image/delete.png);
   @include fixButton;
 }
 
-.table_delete:hover {
-  height: 68px;
-  width: 68px;
-}
-
 .table_close {
   background-image: url(../assets/image/close.png);
   @include fixButton;
-}
-
-.table_close:hover {
-  height: 68px;
-  width: 68px;
 }
 
 .table_buttons {

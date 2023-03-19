@@ -3,11 +3,11 @@ import {
   Routes,
   Route,
 } from "react-router-dom";
-import Header from "./components/Header.jsx";
-import TableMap from "./components/TableMap.jsx";
-import Card from "./components/Card.jsx";
-import "./style/allstyle.scss";
+import Header from "./components/Header/Header";
+import TableMap from "./components/TableMap";
+import Card from "./components/Card/Card";
 import NoMatch from "./components/NoMatch/NoMatch";
+import "./style/allstyle.scss";
 
 
 
