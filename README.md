@@ -11,7 +11,7 @@
 
 <h2>Foto Presentation</h2>
 
-<img width="700" alt="Таблица с иностранными словами" src="https://user-images.githubusercontent.com/108290014/224570294-3ed5ce23-44b8-48d0-8832-d8f7cf3bab34.png">
+<img width="700" alt="Таблица с иностранными словами" src="https://user-images.githubusercontent.com/108290014/226208144-5612477f-aac0-40af-a24f-1404e55824b5.png">
 <img width="700" alt="Карточка с иностранным словом" src="https://user-images.githubusercontent.com/108290014/224570415-f5ffc9a2-726a-4f38-b1dd-6363e0e4e637.png">
 
 ## Getting started
