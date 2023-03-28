@@ -6,6 +6,10 @@ function Card() {
   const [pressed, setPressed] = useState(false);
   const [index, setIndex] = useState(0);
   const [counter, setCounter] = useState(1);
+
+  const [learntWordsIds, setLearntWordsIds] = useState([]);
+  const [wordsNumber, setWordsNumber] = useState(0);
+
   const onecard = cards[index];
 
   const handleChange = () => {
@@ -34,9 +38,31 @@ function Card() {
     setCounter(counter - 1);
   };
 
+  // const handleLearn = (e) => {
+  //   e.preventDefault();
+  //   setLearn(learn + 1);
+  // };
+
+  // считаем количество выученных слов
+  const handleLearn = (id) => {
+    const idArr = [...learntWordsIds];
+    idArr.push(id);
+    const result = [];
+
+    idArr.forEach((el) => {
+      if (!result.includes(el)) {
+        result.push(el);
+      }
+    });
+
+    setLearntWordsIds(result);
+    setWordsNumber(result.length);
+  };
+
   return (
     <>
       <main>
+        <p>You learn {wordsNumber} cards</p>
         <div className="container__onecard">
           <button className="card-answer" onClick={prevClick}>
             Prev word
@@ -60,7 +86,9 @@ function Card() {
               {pressed ? (
                 <div className="table_translate">{onecard.translate}</div>
               ) : (
-                <button className="card-answer">I don`t know this word</button>
+                <button className="card-answer" onClick={handleLearn}>
+                  I know this word
+                </button>
               )}
             </div>
           </motion.div>
