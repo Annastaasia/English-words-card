@@ -1,16 +1,18 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import cards from "../../utils/card.js";
 import { motion } from "framer-motion";
 
-function Card() {
+function Card({ childToParent }) {
   const [pressed, setPressed] = useState(false);
   const [index, setIndex] = useState(0);
   const [counter, setCounter] = useState(1);
 
-  const [learntWordsIds, setLearntWordsIds] = useState([]);
-  const [wordsNumber, setWordsNumber] = useState(0);
+  // const [learntWordsIds, setLearntWordsIds] = useState([]);
+  // const [wordsNumber, setWordsNumber] = useState(0);
 
   const onecard = cards[index];
+
+  const data = "This is data from Child Component to the Parent Component.";
 
   const handleChange = () => {
     setPressed(!pressed);
@@ -38,31 +40,35 @@ function Card() {
     setCounter(counter - 1);
   };
 
+  const ref = useRef();
+  useEffect(() => {
+    ref.current.focus();
+  }, []);
+
   // const handleLearn = (e) => {
   //   e.preventDefault();
   //   setLearn(learn + 1);
   // };
 
-  // считаем количество выученных слов
-  const handleLearn = (id) => {
-    const idArr = [...learntWordsIds];
-    idArr.push(id);
-    const result = [];
+  // const handleLearn = (id) => {
+  //   const idArr = [...learntWordsIds];
+  //   idArr.push(id);
+  //   const result = [];
 
-    idArr.forEach((el) => {
-      if (!result.includes(el)) {
-        result.push(el);
-      }
-    });
+  //   idArr.forEach((el) => {
+  //     if (!result.includes(el)) {
+  //       result.push(el);
+  //     }
+  //   });
 
-    setLearntWordsIds(result);
-    setWordsNumber(result.length);
-  };
+  //   setLearntWordsIds(result);
+  //   setWordsNumber(result.length);
+  // };
 
   return (
     <>
       <main>
-        <p>You learn {wordsNumber} cards</p>
+        <p>You learn {data} cards</p>
         <div className="container__onecard">
           <button className="card-answer" onClick={prevClick}>
             Prev word
@@ -86,7 +92,11 @@ function Card() {
               {pressed ? (
                 <div className="table_translate">{onecard.translate}</div>
               ) : (
-                <button className="card-answer" onClick={handleLearn}>
+                <button
+                  className="card-answer"
+                  onClick={() => childToParent(data)}
+                  ref={ref}
+                >
                   I know this word
                 </button>
               )}
@@ -119,3 +129,5 @@ export default Card;
 // const nextWord = () => {
 //   wordGenerate();
 // };
+
+//onClick={handleLearn}

@@ -7,6 +7,8 @@
   align-items: center;
   text-align: center;
   font-family: "Merriweather", serif;
+  height: 46vh;
+  width: 28vw;
   font-size: 1.2em;
   line-height: 160%;
   @include fixColor;
@@ -38,14 +40,13 @@
 }
 
 .card-answer:hover {
-  height: 9vh;
-  width: 16vw;
+  background: linear-gradient(rgb(80, 188, 177), 60%, rgb(255, 255, 255));
   box-shadow: 20%;
 }
 
 .card-answer:focus {
   outline: none;
-  box-shadow: 0 0 0 3px rgb(117, 179, 218);
+  box-shadow: 0 0 0 3px rgb(114, 168, 212);
 }
 
 .card-counter {
