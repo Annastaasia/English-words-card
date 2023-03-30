@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/English-words-card/static/css/main.c2279ee3.css",
-    "main.js": "/English-words-card/static/js/main.0cd6f1e6.js",
+    "main.css": "/English-words-card/static/css/main.87d8b586.css",
+    "main.js": "/English-words-card/static/js/main.0fb90109.js",
     "static/js/787.629706ad.chunk.js": "/English-words-card/static/js/787.629706ad.chunk.js",
     "static/media/404.png": "/English-words-card/static/media/404.adab416844b994261df8.png",
     "index.html": "/English-words-card/index.html",
-    "main.c2279ee3.css.map": "/English-words-card/static/css/main.c2279ee3.css.map",
-    "main.0cd6f1e6.js.map": "/English-words-card/static/js/main.0cd6f1e6.js.map",
+    "main.87d8b586.css.map": "/English-words-card/static/css/main.87d8b586.css.map",
+    "main.0fb90109.js.map": "/English-words-card/static/js/main.0fb90109.js.map",
     "787.629706ad.chunk.js.map": "/English-words-card/static/js/787.629706ad.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.c2279ee3.css",
-    "static/js/main.0cd6f1e6.js"
+    "static/css/main.87d8b586.css",
+    "static/js/main.0fb90109.js"
   ]
 }
