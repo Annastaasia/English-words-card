@@ -2,30 +2,31 @@ import React, { useState, useEffect, useRef } from "react";
 import cards from "../../utils/card.js";
 import { motion } from "framer-motion";
 
-function Card({ childToParent }) {
+function Card(props) {
   const [pressed, setPressed] = useState(false);
   const [index, setIndex] = useState(0);
   const [counter, setCounter] = useState(1);
-
-  // const [learnWords, setLearnWords] = useState(0);
-
-  // const [learntWordsIds, setLearntWordsIds] = useState([]);
-  // const [wordsNumber, setWordsNumber] = useState(0);
+  const [viewCard, setViewCard] = useState(false);
 
   const onecard = cards[index];
 
-  // const data = () => {
-  //   setLearnWords(learnWords + 1);
-  // };
-
   const handleChange = () => {
     setPressed(!pressed);
+  };
+
+  const handleViewCard = () => {
+    if (!viewCard) {
+      setViewCard(true);
+      props.onLearned();
+    }
   };
 
   const nextClick = () => {
     if (index + 1 >= cards.length) {
       setIndex(0);
     } else setIndex(index + 1);
+    setViewCard(false);
+    setPressed(false);
     handleCount();
   };
 
@@ -33,6 +34,8 @@ function Card({ childToParent }) {
     if (index - 1 < 0) {
       setIndex(cards.length - 1);
     } else setIndex(index - 1);
+    setViewCard(false);
+    setPressed(false);
     handleCountMin();
   };
 
@@ -49,29 +52,14 @@ function Card({ childToParent }) {
     ref.current.focus();
   }, []);
 
-  // const handleLearn = (e) => {
-  //   e.preventDefault();
-  //   setLearn(learn + 1);
-  // };
-
-  // const handleLearn = (id) => {
-  //   const idArr = [...learntWordsIds];
-  //   idArr.push(id);
-  //   const result = [];
-
-  //   idArr.forEach((el) => {
-  //     if (!result.includes(el)) {
-  //       result.push(el);
-  //     }
-  //   });
-
-  //   setLearntWordsIds(result);
-  //   setWordsNumber(result.length);
-  // };
-
   return (
     <>
       <main>
+        <div className="card-learned">
+          <button className="card-learned-btn" onClick={handleViewCard}>
+            I know this word
+          </button>
+        </div>
         <div className="container__onecard">
           <button className="card-answer" onClick={prevClick}>
             Prev word
@@ -95,12 +83,8 @@ function Card({ childToParent }) {
               {pressed ? (
                 <div className="table_translate">{onecard.translate}</div>
               ) : (
-                <button
-                  className="card-answer"
-                  onClick={() => childToParent()}
-                  ref={ref}
-                >
-                  I know this word
+                <button className="card-answer" ref={ref}>
+                  Translate
                 </button>
               )}
             </div>
@@ -134,3 +118,5 @@ export default Card;
 // };
 
 //onClick={handleLearn}
+
+//onClick={() => childToParent()}

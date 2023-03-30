@@ -4,20 +4,13 @@ import Card from "../Card/Card";
 function CardLearn() {
   const [learnWords, setLearnWords] = useState(0);
 
-  // const [data, setData] = useState("");
-
-  // const childToParent = (childdata) => {
-  //   setData(childdata);
-  // };
-
-  const data = (childdata) => {
+  const handleLearned = () => {
     setLearnWords(learnWords + 1);
   };
   return (
     <>
-      {data}
-      <p>You learn {learnWords} cards</p>
-      <Card data={data} />
+      <p className="cardlearn">You learned: {learnWords} words</p>
+      <Card onLearned={handleLearned} />
     </>
   );
 }
