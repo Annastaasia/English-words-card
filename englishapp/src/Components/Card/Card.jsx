@@ -7,12 +7,16 @@ function Card({ childToParent }) {
   const [index, setIndex] = useState(0);
   const [counter, setCounter] = useState(1);
 
+  // const [learnWords, setLearnWords] = useState(0);
+
   // const [learntWordsIds, setLearntWordsIds] = useState([]);
   // const [wordsNumber, setWordsNumber] = useState(0);
 
   const onecard = cards[index];
 
-  const data = "This is data from Child Component to the Parent Component.";
+  // const data = () => {
+  //   setLearnWords(learnWords + 1);
+  // };
 
   const handleChange = () => {
     setPressed(!pressed);
@@ -68,7 +72,6 @@ function Card({ childToParent }) {
   return (
     <>
       <main>
-        <p>You learn {data} cards</p>
         <div className="container__onecard">
           <button className="card-answer" onClick={prevClick}>
             Prev word
@@ -94,7 +97,7 @@ function Card({ childToParent }) {
               ) : (
                 <button
                   className="card-answer"
-                  onClick={() => childToParent(data)}
+                  onClick={() => childToParent()}
                   ref={ref}
                 >
                   I know this word
