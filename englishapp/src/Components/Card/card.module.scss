@@ -8,7 +8,7 @@
   text-align: center;
   font-family: "Merriweather", serif;
   height: 42vh;
-  width: 24vw;
+  width: 28vw;
   font-size: 1.2em;
   line-height: 160%;
   @include fixColor;
@@ -23,12 +23,12 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  margin: 1% 15% 1% 15%;
+  margin: 0% 23% 1% 23%;
 }
 
 .card-answer {
   height: 7vh;
-  width: 12vw;
+  width: 11vw;
   border-radius: 5%;
   text-align: center;
   font-family: "Merriweather", serif;

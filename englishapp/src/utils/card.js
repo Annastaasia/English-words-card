@@ -4,7 +4,7 @@ const cards = [
     id: "11343",
     word: "add",
     transcription: "[æd]",
-    hint: "v. to put (something) with another to make it larger",
+    hint: "v. to put with another to make it larger",
     translate: "добавлять",
 
   },
@@ -32,7 +32,7 @@ const cards = [
     id: "11349",
     word: "cause",
     transcription: "[kɔːz]",
-    hint: "v. to make happen; n. the thing or person that produces a result",
+    hint: "v. to make happen; n. the thing that produces a result",
     translate: "вызывать"
 
   },
