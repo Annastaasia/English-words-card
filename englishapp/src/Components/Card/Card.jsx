@@ -56,7 +56,11 @@ function Card(props) {
     <>
       <main>
         <div className="card-learned">
-          <button className="card-learned-btn" onClick={handleViewCard}>
+          <button
+            className="card-learned-btn"
+            onClick={handleViewCard}
+            ref={ref}
+          >
             I know this word
           </button>
         </div>
@@ -83,9 +87,7 @@ function Card(props) {
               {pressed ? (
                 <div className="table_translate">{onecard.translate}</div>
               ) : (
-                <button className="card-answer" ref={ref}>
-                  Translate
-                </button>
+                <button className="card-answer">Translate</button>
               )}
             </div>
           </motion.div>
