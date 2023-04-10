@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
+//import { useForm } from "react-hook-form";
 
 export default function Table(props) {
   const [pressed, setPressed] = useState(false);
@@ -20,7 +21,9 @@ export default function Table(props) {
 
         {pressed ? (
           <>
-            <input className="table_input"></input>
+            <input
+            //className={`input ${errors.name ? "input--error" : ""}`}
+            ></input>
 
             <input className="table_input"></input>
 
