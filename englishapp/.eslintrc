@@ -1,7 +1,7 @@
 {
   "extends": ["react-app", "react-app/jest"],
   "rules": {
-    "no-console": "error",
+    //"no-console": "warn",
     "prefer-const": "warn",
     "quotes": ["error", "double"],
     "jsx-quotes": ["error", "prefer-double"],

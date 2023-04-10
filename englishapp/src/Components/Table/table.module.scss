@@ -27,3 +27,13 @@
 .table_input {
   height: 4vh;
 }
+
+.table_input--error {
+  border: 2px solid red;
+  height: 4vh;
+}
+
+.disabled {
+  border: 1px solid #999999;
+  //opacity: 10%;
+}
