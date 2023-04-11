@@ -46,7 +46,7 @@ export default function Table(props) {
                   required: true,
                   validate: {
                     checkLength: (value) => value.length > 1,
-                    matchPattern: (value) => /^[a-zA-Z]+$/.test(value),
+                    matchPattern: (value) => /^[a-zA-Z-`]+$/.test(value),
                   },
                 })}
               />
@@ -71,7 +71,7 @@ export default function Table(props) {
                   required: true,
                   validate: {
                     checkLength: (value) => value.length > 1,
-                    matchPattern: (value) => /^[a-zA-Z]+$/.test(value),
+                    matchPattern: (value) => /^[a-zA-Zəɪæɔ_ːˈ-]+$/.test(value),
                   },
                 })}
               />
@@ -96,7 +96,7 @@ export default function Table(props) {
                   required: true,
                   validate: {
                     checkLength: (value) => value.length > 1,
-                    matchPattern: (value) => /^[а-яА-Я]+$/.test(value),
+                    matchPattern: (value) => /^[а-яА-Я-]+$/.test(value),
                   },
                 })}
               />
@@ -125,7 +125,7 @@ export default function Table(props) {
               <h2 className="table_title"> {props.word}</h2>
             </div>
 
-            <p className="table_transcription">{props.transcription}</p>
+            <p className="table_transcription">[{props.transcription}]</p>
 
             <div className="table_translate">{props.translate}</div>
 
