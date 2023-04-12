@@ -5,6 +5,6 @@
     "prefer-const": "warn",
     "quotes": ["error", "double"],
     "jsx-quotes": ["error", "prefer-double"],
-    "indent": ["error", 2]
+    "indent": ["warn", 2]
   }
 }

@@ -1,8 +1,11 @@
+import React from "react";
 import { Link } from "react-router-dom";
 import mainLogo from "../../assets/image/logo.png";
 import { motion } from "framer-motion";
+import { TranslationContext } from "../TranslationContext.js";
 
 function Header() {
+  const word = React.useContext(TranslationContext);
   return (
     <>
       <header>
@@ -20,7 +23,7 @@ function Header() {
               whileHover={{ opacity: 0.8 }}
             />
           </Link>
-          <h1 className="App__header__h1">English cards</h1>
+          <h1 className="App__header__h1"> {word.title}</h1>
           <div className="App__header__buttons">
             <Link to="/game">
               <motion.button
