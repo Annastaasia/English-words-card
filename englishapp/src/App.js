@@ -3,7 +3,7 @@ import {
   Routes,
   Route,
 } from "react-router-dom";
-import { Apiwords } from "./context/Context.js";
+import { Apiwords } from "./components/Context";
 import Header from "./components/Header/Header";
 import TableMap from "./components/TableMap";
 import CardLearn from "./components/CardLearn/CardLearn";

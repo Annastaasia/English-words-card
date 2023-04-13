@@ -38,11 +38,11 @@ export default function Table(props) {
             <div className="form-control">
               <input
                 className={`"table_input" ${
-                  errors.word && "table_input--error"
+                  errors.english && "table_input--error"
                 }`}
                 type="text"
-                name="word"
-                {...register("word", {
+                name="english"
+                {...register("english", {
                   required: true,
                   validate: {
                     checkLength: (value) => value.length > 1,
@@ -50,12 +50,12 @@ export default function Table(props) {
                   },
                 })}
               />
-              {errors.word?.type === "checkLength" && (
+              {errors.english?.type === "checkLength" && (
                 <p className="errorMsg">
-                  Word should be contain more than 1 character
+                  English should be contain more than 1 character
                 </p>
               )}
-              {errors.word?.type === "matchPattern" && (
+              {errors.english?.type === "matchPattern" && (
                 <p className="errorMsg">Use latin letters</p>
               )}
             </div>
@@ -88,11 +88,11 @@ export default function Table(props) {
             <div className="form-control">
               <input
                 className={`"table_input" ${
-                  errors.translate && "table_input--error"
+                  errors.russian && "table_input--error"
                 }`}
                 type="text"
-                name="translate"
-                {...register("translate", {
+                name="russian"
+                {...register("russian", {
                   required: true,
                   validate: {
                     checkLength: (value) => value.length > 1,
@@ -100,12 +100,12 @@ export default function Table(props) {
                   },
                 })}
               />
-              {errors.translate?.type === "checkLength" && (
+              {errors.russian?.type === "checkLength" && (
                 <p className="errorMsg">
-                  Translate should be at-least 1 characters
+                  Russian should be at-least 1 characters
                 </p>
               )}
-              {errors.translate?.type === "matchPattern" && (
+              {errors.russian?.type === "matchPattern" && (
                 <p className="errorMsg">Use russian letters</p>
               )}
             </div>
@@ -114,7 +114,7 @@ export default function Table(props) {
               <button
                 type="submit"
                 //onClick={handleChange}
-                className={` table_save ${errors.word && "disabled"}`}
+                className={` table_save ${errors.english && "disabled"}`}
               ></button>
               <button className="table_close" onClick={handleChange}></button>
             </div>
@@ -122,12 +122,12 @@ export default function Table(props) {
         ) : (
           <>
             <div>
-              <h2 className="table_title"> {props.word}</h2>
+              <h2 className="table_title"> {props.english}</h2>
             </div>
 
-            <p className="table_transcription">[{props.transcription}]</p>
+            <p className="table_transcription">{props.transcription}</p>
 
-            <div className="table_translate">{props.translate}</div>
+            <div className="table_russian">{props.russian}</div>
 
             <div className="table_buttons">
               <button className="table_edit" onClick={handleChange}></button>
