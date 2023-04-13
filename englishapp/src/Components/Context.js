@@ -9,6 +9,12 @@ export const Context = createContext();
 export const Apiwords = (props) => {
     const [dictionary, SetDictionary] = useState([]);
     const [isLouding, SetIsloading] = useState(true);
+    const styles = {
+        height: "80vh",
+        margin: "1% 10%",
+    };
+
+
 
     useEffect(() => {
         SetIsloading(true);
@@ -22,12 +28,12 @@ export const Apiwords = (props) => {
     }, []);
 
     if (isLouding) {
-        return <img
+        return <div className="container"> <img
             src={loading}
             alt="loading"
             className="Context__loading"
-        //style={{ height= 10 rem }}
-        />;
+            style={styles}
+        /></div >
     }
 
     return (
