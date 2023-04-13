@@ -2,8 +2,6 @@ import React, { createContext, useState, useEffect } from "react";
 import loading from "../assets/image/loading.gif";
 import "../style/context.module.scss";
 
-
-
 export const Context = createContext();
 
 export const Apiwords = (props) => {
@@ -11,10 +9,8 @@ export const Apiwords = (props) => {
     const [isLouding, SetIsloading] = useState(true);
     const styles = {
         height: "80vh",
-        margin: "1% 10%",
+        margin: "6% 13%",
     };
-
-
 
     useEffect(() => {
         SetIsloading(true);
@@ -28,10 +24,9 @@ export const Apiwords = (props) => {
     }, []);
 
     if (isLouding) {
-        return <div className="container"> <img
+        return <div className="Context__container"> <img
             src={loading}
             alt="loading"
-            className="Context__loading"
             style={styles}
         /></div >
     }
