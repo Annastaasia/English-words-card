@@ -1,18 +1,23 @@
 import Table from "./Table/Table.jsx";
-import cards from "../utils/card.js";
+//import cards from "../utils/card.js";
+import { useContext } from "react";
+import { Context } from "../context/Context.js";
 
 export default function TableMap() {
+  const { dictionary, isLouding } = useContext(Context);
   return (
     <main>
       <div className="container__cards">
-        {cards.map((card, i) => (
+        {dictionary.map((card, i) => (
           <Table
-            num={i + 1}
+            //num={i + 1}
             key={card.id}
-            number={card.number}
-            word={card.word}
+            english={card.english}
             transcription={card.transcription}
-            translate={card.translate}
+            russian={card.russian}
+            //number={card.number}
+            //word={card.word}
+            //translate={card.translate}
           />
         ))}
       </div>
