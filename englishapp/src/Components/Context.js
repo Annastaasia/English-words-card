@@ -9,7 +9,13 @@ export const Apiwords = (props) => {
     const [isLouding, SetIsloading] = useState(true);
     const styles = {
         height: "80vh",
-        margin: "6% 13%",
+        margin: "1% 13%",
+    };
+
+    const styles__p = {
+        margin: "4% 46%",
+        color: "rgb(28, 92, 194)",
+        fontSize: "2.5em"
     };
 
     useEffect(() => {
@@ -24,12 +30,15 @@ export const Apiwords = (props) => {
     }, []);
 
     if (isLouding) {
-        return <div className="Context__container"> <img
-            src={loading}
-            alt="loading"
-            style={styles}
-        /></div >
+        return <div className="Container">
+            <p style={styles__p}>Loading...</p>
+            <img
+                src={loading}
+                alt="loading"
+                style={styles}
+            /></div >
     }
+    console.log(isLouding);
 
     return (
         <Context.Provider value={{ dictionary, isLouding, SetDictionary }}>
