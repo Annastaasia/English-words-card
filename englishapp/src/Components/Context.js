@@ -7,6 +7,7 @@ export const Context = createContext();
 export const Apiwords = (props) => {
     const [dictionary, SetDictionary] = useState([]);
     const [isLouding, SetIsloading] = useState(true);
+    const [error, setError] = useState(false);
     const styles = {
         height: "80vh",
         margin: "1% 13%",
@@ -19,15 +20,62 @@ export const Apiwords = (props) => {
     };
 
     useEffect(() => {
-        SetIsloading(true);
-        fetch("http://itgirlschool.justmakeit.ru/api/words")
-            .then((response) => response.json())
-            .then((data) => { SetDictionary(data) })
-            .catch((error) => {
-                console.error("Error fetching words:", error);
-            })
-            .finally(() => { SetIsloading(false) })
+        const fetchWords = async () => {
+            SetIsloading(true);
+            fetch("http://itgirlschool.justmakeit.ru/api/words")
+                .then((response) => response.json())
+                .then((data) => { SetDictionary(data) })
+                .catch(() => {
+                    setError(true);
+                })
+                // .catch((error) => {
+                //     console.error("Error fetching words:", error);
+                // })
+                .finally(() => { SetIsloading(false) })
+        }
+        fetchWords();
     }, []);
+
+
+    const addWord = async (word) => {
+        fetch("https://cors-everywhere.herokuapp.com/http://itgirlschool.justmakeit.ru/api/words/add", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(word),
+        })
+            .then(() => {
+                SetDictionary();
+            })
+            .catch(() => {
+                setError(true);
+            })
+    };
+
+
+    // const addWords = async () => {
+    //     // Получаем значения полей
+    //     try {
+    //         const res = await fetch(`http://itgirlschool.justmakeit.ru/api/words/add`, {
+    //             method: 'POST',
+    //             headers: {
+    //                 'Content-Type': 'application/json'
+    //             },
+    //             body: JSON.stringify({
+    //                 // Преобразуем данные в формат JSON
+    //             })
+    //         });
+    //         if (res.status === 200) {
+    //             const newlist = await res.json();
+    //             // Обновляем список слов с новым словом
+    //         }
+    //     } catch (e) {
+    //         alert(`Ошибка соединения с сервером. ${e}`); // Обработка ошибок соединения с сервером
+    //     } finally {
+    //         // Очищаем поля
+    //     }
+    // }
 
     if (isLouding) {
         return <div className="Container">
@@ -38,10 +86,20 @@ export const Apiwords = (props) => {
                 style={styles}
             /></div >
     }
-    console.log(isLouding);
+
+    if (error) {
+        return <div className="Container">
+            <p style={styles__p}>Error</p>
+            <img
+                src={loading}
+                alt="loading"
+                style={styles}
+            /></div >
+    }
+
 
     return (
-        <Context.Provider value={{ dictionary, isLouding, SetDictionary }}>
+        <Context.Provider value={{ dictionary, isLouding, SetDictionary, error, addWord }}>
             {props.children}
         </Context.Provider>
     )
