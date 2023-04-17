@@ -8,6 +8,7 @@ export const Apiwords = (props) => {
     const [dictionary, SetDictionary] = useState([]);
     const [isLouding, SetIsloading] = useState(true);
     const [error, setError] = useState(false);
+    const [list, setList] = useState();
     const styles = {
         height: "80vh",
         margin: "1% 13%",
@@ -20,25 +21,46 @@ export const Apiwords = (props) => {
     };
 
     useEffect(() => {
-        const fetchWords = async () => {
-            SetIsloading(true);
-            fetch("http://itgirlschool.justmakeit.ru/api/words")
-                .then((response) => response.json())
-                .then((data) => { SetDictionary(data) })
-                .catch(() => {
-                    setError(true);
-                })
-                // .catch((error) => {
-                //     console.error("Error fetching words:", error);
-                // })
-                .finally(() => { SetIsloading(false) })
-        }
-        fetchWords();
+        getWords();
     }, []);
+
+    const getWords = async () => {
+        SetIsloading(true);
+        fetch(
+            "http://itgirlschool.justmakeit.ru/api/words"
+        )
+            .then((response) => {
+                if (response.ok) {
+                    return response.json();
+                }
+            })
+            .then((data) => { SetDictionary(data) })
+            .catch(() => {
+                setError(true);
+            })
+            .finally(() => { SetIsloading(false) })
+    };
+
+    // useEffect(() => {
+    //     const fetchWords = async () => {
+    //         SetIsloading(true);
+    //         fetch("http://itgirlschool.justmakeit.ru/api/words")
+    //             .then((response) => response.json())
+    //             .then((data) => { SetDictionary(data) })
+    //             .catch(() => {
+    //                 setError(true);
+    //             })
+    //             // .catch((error) => {
+    //             //     console.error("Error fetching words:", error);
+    //             // })
+    //             .finally(() => { SetIsloading(false) })
+    //     }
+    //     fetchWords();
+    // }, []);
 
 
     const addWord = async (word) => {
-        fetch("https://cors-everywhere.herokuapp.com/http://itgirlschool.justmakeit.ru/api/words/add", {
+        await fetch("https://cors-everywhere.herokuapp.com/http://itgirlschool.justmakeit.ru/api/words/add", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -46,12 +68,61 @@ export const Apiwords = (props) => {
             body: JSON.stringify(word),
         })
             .then(() => {
-                SetDictionary();
+                getWords();
             })
             .catch(() => {
                 setError(true);
             })
     };
+
+    // const updateWord = async (word) => {
+    //     fetch(`http://itgirlschool.justmakeit.ru/api/${word.id}/update`, {
+    //         method: "POST",
+    //         body: JSON.stringify(word),
+    //     })
+    //         .then(() => {
+    //             getWords();
+    //         })
+    //         .then((data) => {
+    //             SetDictionary((prevDictionary) =>
+    //                 prevDictionary.map((newword) =>
+    //                     word.id === newword.id ? data : word
+    //                 )
+    //             );
+    //         })
+    //         .catch((errors) => setError(errors));
+    // };
+
+    const updateWord = async (id) => {
+        const newWord = {
+            english: dictionary.english,
+            transcription: dictionary.transcription,
+            russian: dictionary.russian,
+        }
+        try {
+            const res = await fetch(`http://itgirlschool.justmakeit.ru/api/words/${id}/update`, {
+                method: "POST",
+                body: JSON.stringify(newWord)
+            });
+            if (res.ok) {
+                let newList = [...list].map(item => {
+                    if (item.id === id) {
+                        item.english = dictionary.english;
+                        item.transcription = dictionary.transcription;
+                        item.russian = dictionary.russian;
+                    }
+                    return item;
+                });
+                //newList()
+                setList(newList);// Обновляем список слов
+            }
+        } catch (e) {
+            alert(`Ошибка соединения с сервером. ${e}`);
+        } finally {
+            SetDictionary(false)
+            // Очищаем поля
+        }
+    }
 
 
     // const addWords = async () => {
@@ -99,7 +170,7 @@ export const Apiwords = (props) => {
 
 
     return (
-        <Context.Provider value={{ dictionary, isLouding, SetDictionary, error, addWord }}>
+        <Context.Provider value={{ dictionary, isLouding, SetDictionary, error, addWord, updateWord }}>
             {props.children}
         </Context.Provider>
     )

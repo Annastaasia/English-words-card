@@ -1,10 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { motion } from "framer-motion";
 import { useForm } from "react-hook-form";
+import { Context } from "../Context.js";
 import "./table.module.scss";
 
 export default function Table(props) {
   const [pressed, setPressed] = useState(false);
+  const [state, setState] = useState();
+  const { updateWord } = useContext(Context);
 
   const {
     register,
@@ -15,11 +18,29 @@ export default function Table(props) {
   });
 
   const onSubmit = (data) => {
+    //addWords(state);
+    //setState();
     console.log(data); //здесь выводятся данные, если заполнено всё верно
   };
 
   const handleChange = () => {
     setPressed(!pressed);
+  };
+
+  const handleChangeInput = (event) => {
+    setState({
+      ...state,
+      [event.target.dataset.name]: event.target.value,
+    });
+  };
+
+  const handleChangeSave = (event) => {
+    event.preventDefault();
+
+    onSubmit();
+    setPressed(!pressed);
+
+    updateWord(state);
   };
 
   return (
@@ -42,6 +63,8 @@ export default function Table(props) {
                 }`}
                 type="text"
                 name="english"
+                data-name={"english"}
+                onChange={handleChangeInput}
                 {...register("english", {
                   required: true,
                   validate: {
@@ -67,6 +90,8 @@ export default function Table(props) {
                 }`}
                 type="text"
                 name="transcription"
+                data-name={"transcription"}
+                onChange={handleChangeInput}
                 {...register("transcription", {
                   required: true,
                   validate: {
@@ -92,6 +117,8 @@ export default function Table(props) {
                 }`}
                 type="text"
                 name="russian"
+                data-name={"russian"}
+                onChange={handleChangeInput}
                 {...register("russian", {
                   required: true,
                   validate: {
@@ -112,8 +139,9 @@ export default function Table(props) {
 
             <div className="table_buttons">
               <button
-                type="submit"
+                //type="submit"
                 //onClick={handleChange}
+                onClick={handleChangeSave}
                 className={` table_save ${errors.english && "disabled"}`}
               ></button>
               <button className="table_close" onClick={handleChange}></button>
