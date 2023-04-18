@@ -76,6 +76,20 @@ export const Apiwords = (props) => {
             })
     };
 
+    const editWords = (dictionary) => {
+        fetch(`http://itgirlschool.justmakeit.ru/api/words/${dictionary.id}/update`, {
+            method: "POST",
+            body: JSON.stringify(dictionary),
+        })
+            .then(() => {
+                getWords();
+            })
+            .then((data) => {
+                console.log(data);
+            })
+            .catch((errors) => setError(errors));
+    };
+
     // const updateWord = async (word) => {
     //     fetch(`http://itgirlschool.justmakeit.ru/api/${word.id}/update`, {
     //         method: "POST",
@@ -94,47 +108,66 @@ export const Apiwords = (props) => {
     //         .catch((errors) => setError(errors));
     // };
 
-    const updateWord = async (id) => {
-        const newWord = {
-            english: dictionary.english,
-            transcription: dictionary.transcription,
-            russian: dictionary.russian,
-        }
+    // const updateWord = async (id) => {
+    //     const newWord = {
+    //         english: dictionary.english,
+    //         transcription: dictionary.transcription,
+    //         russian: dictionary.russian,
+    //     }
+    //     try {
+    //         const res = await fetch(`http://itgirlschool.justmakeit.ru/api/words/${id}/update`, {
+    //             method: "POST",
+    //             body: JSON.stringify(newWord)
+    //         });
+    //         if (res.ok) {
+    //             const newList = [...list].map(item => {
+    //                 if (item.id === id) {
+    //                     item.english = dictionary.english;
+    //                     item.transcription = dictionary.transcription;
+    //                     item.russian = dictionary.russian;
+    //                 }
+    //                 return item;
+    //             });
+    //             setList(newList);// Обновляем список слов
+    //         }
+    //     } catch (e) {
+    //         alert(`Ошибка соединения с сервером. ${e}`);
+    //     } finally {
+    //         SetDictionary(false)
+    //         // Очищаем поля
+    //     }
+    // }
+
+
+    // const deleteWords = async (id) => {
+    //     await fetch(`http://itgirlschool.justmakeit.ru/api/words/${id}/delete`, {
+    //         method: "POST",
+    //     })
+    //         .then(() => {
+    //             getWords();
+    //         })
+    //         .catch(() => {
+    //             setError(true);
+    //         })
+    // };
+
+    const deleteWords = async (id) => {
         try {
-            const res = await fetch(`http://itgirlschool.justmakeit.ru/api/words/${id}/update`, {
+            const res = await fetch(`http://itgirlschool.justmakeit.ru/api/words/${id}/delete`, {
                 method: "POST",
-                body: JSON.stringify(newWord)
             });
             if (res.ok) {
-                const newList = [...list].map(item => {
-                    if (item.id === id) {
-                        item.english = dictionary.english;
-                        item.transcription = dictionary.transcription;
-                        item.russian = dictionary.russian;
-                    }
-                    return item;
-                });
-                //newList()
-                setList(newList);// Обновляем список слов
-            }
+                const newList = [...list].filter(item => item.id !== id);
+                // Обновляем список слов
+                setList(newList)
+            };
+
         } catch (e) {
             alert(`Ошибка соединения с сервером. ${e}`);
         } finally {
-            SetDictionary(false)
             // Очищаем поля
         }
     }
-
-
-    const deleteWords = (id) => {
-        fetch(`http://itgirlschool.justmakeit.ru/api/words/${id}/delete`, {
-            method: "POST",
-        })
-            .then(() => {
-                getWords();
-            })
-            .catch((errors) => setError(errors));
-    };
 
 
 
@@ -185,7 +218,7 @@ export const Apiwords = (props) => {
 
 
     return (
-        <Context.Provider value={{ dictionary, isLouding, SetDictionary, error, addWord, updateWord, deleteWords }}>
+        <Context.Provider value={{ dictionary, isLouding, SetDictionary, error, addWord, editWords, deleteWords }}>
             {props.children}
         </Context.Provider>
     )

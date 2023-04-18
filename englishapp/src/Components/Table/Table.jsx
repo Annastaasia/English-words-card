@@ -1,15 +1,15 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useContext } from "react";
 import { motion } from "framer-motion";
 import { useForm } from "react-hook-form";
 import { Context } from "../Context.js";
 import "./table.module.scss";
 
 export default function Table(props) {
+  const { id, english, transcription, russian } = props;
   const [pressed, setPressed] = useState(false);
   const [state, setState] = useState(props);
   //const { updateWord } = useContext(Context);
-  const { editWords, dictionary, deleteWords } = useContext(Context);
-  const [wordCollection, setwordCollection] = useState(dictionary);
+  const { editWords } = useContext(Context);
 
   // const methods = useForm();
   // const method = useFormContext();
@@ -68,12 +68,8 @@ export default function Table(props) {
     editWords(state);
   };
 
-  useEffect(() => {
-    setwordCollection(dictionary);
-  }, [dictionary]);
-
-  const onDelete = (id) => {
-    deleteWords(id);
+  const ondelete = () => {
+    props.onDelete(props.id);
   };
 
   return (
@@ -193,10 +189,7 @@ export default function Table(props) {
 
             <div className="table_buttons">
               <button className="table_edit" onClick={handleChange}></button>
-              <button
-                className="table_delete"
-                onClick={() => onDelete(props.id)}
-              ></button>
+              <button className="table_delete" onClick={ondelete}></button>
             </div>
           </>
         )}
