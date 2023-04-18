@@ -1,0 +1,44 @@
+.Nomatch {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  height: 50vh;
+  width: 15vw;
+  font-family: "Merriweather", serif;
+  font-size: 1.3em;
+  line-height: 16%;
+  border: 10px solid rgb(82, 144, 205);
+  background: linear-gradient(rgb(80, 188, 177), 20%, rgb(28, 92, 194));
+  color: rgb(255, 255, 255);
+  margin: 0% 0% 1% 38%;
+  padding: 2% 4% 4% 4%;
+  row-gap: 1rem;
+  border-radius: 15%;
+}
+.Nomatch p {
+  color: rgb(255, 255, 255);
+  font-family: "Merriweather", serif;
+}
+.Nomatch button {
+  height: 65px;
+  width: 15vw;
+  border-radius: 5%;
+  text-align: center;
+  font-family: "Merriweather", serif;
+  font-size: 1.1em;
+  border: 0px solid rgb(255, 255, 255);
+  background: linear-gradient(rgb(80, 188, 177), 20%, rgb(255, 255, 255));
+  color: rgb(28, 92, 194);
+  cursor: pointer;
+}
+.Nomatch button:hover {
+  height: 5vw;
+  width: 16vw;
+  box-shadow: 20%;
+}
+.Nomatch button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgb(117, 179, 218);
+}/*# sourceMappingURL=nomatch.module.css.map */

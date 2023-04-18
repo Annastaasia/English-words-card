@@ -1,0 +1,38 @@
+.container {
+  margin: 5%;
+}
+
+.table {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2%;
+  text-align: center;
+  font-family: "Merriweather", serif;
+  font-size: 1.2em;
+  line-height: 160%;
+  border: 10px solid rgb(82, 144, 205);
+  background: linear-gradient(rgb(80, 188, 177), 20%, rgb(28, 92, 194));
+  color: rgb(255, 255, 255);
+}
+
+.container__cards {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 5%;
+}
+
+.table_input {
+  height: 4vh;
+}
+
+.table_input--error {
+  border: 2px solid red;
+  height: 4vh;
+}
+
+.disabled {
+  border: 1px solid #999999;
+}/*# sourceMappingURL=table.module.css.map */

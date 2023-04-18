@@ -1,0 +1,61 @@
+header {
+  position: sticky;
+  top: 0px;
+  z-index: 1;
+}
+
+.App__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  -moz-column-gap: 1.5rem;
+       column-gap: 1.5rem;
+  height: 12vh;
+  margin: 0% 5% 1% 5%;
+  padding: 1% 2%;
+  border-radius: 1%;
+  border: 10px solid rgb(82, 144, 205);
+  background: linear-gradient(rgb(80, 188, 177), 20%, rgb(28, 92, 194));
+  color: rgb(255, 255, 255);
+}
+.App__header h1 {
+  color: rgb(255, 255, 255);
+  font-size: 4vw;
+  font-family: "Merriweather", serif;
+}
+.App__header button:hover,
+.App__header button:active {
+  box-shadow: 10%;
+}
+.App__header button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgb(117, 179, 218);
+}
+
+.App__header__game {
+  background-image: url(../../assets/image/start.png);
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  height: 65px;
+  width: 65px;
+  border-radius: 15%;
+  border: 1px solid rgb(255, 255, 255);
+  cursor: pointer;
+}
+
+.App__header__home {
+  background-image: url(../../assets/image/home.png);
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  height: 65px;
+  width: 65px;
+  border-radius: 15%;
+  border: 1px solid rgb(255, 255, 255);
+  cursor: pointer;
+  margin-left: 2vw;
+}
+
+.App__header__buttons {
+  display: flex;
+  justify-content: space-between;
+}/*# sourceMappingURL=header.module.css.map */

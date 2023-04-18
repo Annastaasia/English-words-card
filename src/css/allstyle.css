@@ -1,0 +1,315 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  font-family: "Merriweather", serif;
+  height: 42vh;
+  width: 28vw;
+  font-size: 1.2em;
+  line-height: 160%;
+  border: 10px solid rgb(82, 144, 205);
+  background: linear-gradient(rgb(80, 188, 177), 20%, rgb(28, 92, 194));
+  color: rgb(255, 255, 255);
+  margin: 0% 20% 1% 20%;
+  padding: 2% 4% 4% 4%;
+  row-gap: 1.8rem;
+  border-radius: 15%;
+}
+
+.container__onecard {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 0% 23% 1% 23%;
+}
+
+.card-answer {
+  height: 7vh;
+  width: 11vw;
+  border-radius: 5%;
+  text-align: center;
+  font-family: "Merriweather", serif;
+  font-size: 1.1em;
+  border: 0px solid rgb(255, 255, 255);
+  background: linear-gradient(rgb(80, 188, 177), 20%, rgb(255, 255, 255));
+  color: rgb(28, 92, 194);
+  cursor: pointer;
+}
+
+.card-answer:hover {
+  background: linear-gradient(rgb(80, 188, 177), 60%, rgb(255, 255, 255));
+  box-shadow: 20%;
+}
+
+.card-answer:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgb(82, 144, 205);
+}
+
+.card-counter {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 0% 15% 0% 15%;
+  font-family: "Merriweather", serif;
+  font-size: 1.5em;
+  color: rgb(28, 92, 194);
+}
+
+.card-learned {
+  display: flex;
+  align-items: center;
+  margin-left: 9%;
+}
+
+.card-learned-btn {
+  height: 7vh;
+  width: 11vw;
+  border-radius: 5%;
+  text-align: center;
+  font-family: "Merriweather", serif;
+  font-size: 1.1em;
+  border: 0px solid rgb(255, 255, 255);
+  background: linear-gradient(rgb(80, 188, 177), 20%, rgb(255, 255, 255));
+  color: rgb(28, 92, 194);
+  cursor: pointer;
+}
+
+.card-learned-btn:hover {
+  background: linear-gradient(rgb(80, 188, 177), 60%, rgb(255, 255, 255));
+  box-shadow: 20%;
+}
+
+.card-learned-btn:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgb(82, 144, 205);
+}
+
+header {
+  position: sticky;
+  top: 0px;
+  z-index: 1;
+}
+
+.App__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  -moz-column-gap: 1.5rem;
+       column-gap: 1.5rem;
+  height: 12vh;
+  margin: 0% 5% 1% 5%;
+  padding: 1% 2%;
+  border-radius: 1%;
+  border: 10px solid rgb(82, 144, 205);
+  background: linear-gradient(rgb(80, 188, 177), 20%, rgb(28, 92, 194));
+  color: rgb(255, 255, 255);
+}
+.App__header h1 {
+  color: rgb(255, 255, 255);
+  font-size: 4vw;
+  font-family: "Merriweather", serif;
+}
+.App__header button:hover,
+.App__header button:active {
+  box-shadow: 10%;
+}
+.App__header button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgb(117, 179, 218);
+}
+
+.App__header__game {
+  background-image: url(../../assets/image/start.png);
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  height: 65px;
+  width: 65px;
+  border-radius: 15%;
+  border: 1px solid rgb(255, 255, 255);
+  cursor: pointer;
+}
+
+.App__header__home {
+  background-image: url(../../assets/image/home.png);
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  height: 65px;
+  width: 65px;
+  border-radius: 15%;
+  border: 1px solid rgb(255, 255, 255);
+  cursor: pointer;
+  margin-left: 2vw;
+}
+
+.App__header__buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.table_save {
+  background-image: url(../assets/image/save.png);
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  height: 65px;
+  width: 65px;
+  border-radius: 15%;
+  border: 1px solid rgb(255, 255, 255);
+  cursor: pointer;
+}
+
+.table_save:hover,
+.table_edit:hover,
+.table_delete:hover,
+.table_close:hover {
+  height: 68px;
+  width: 68px;
+}
+
+.table_save:focus,
+.table_edit:focus,
+.table_delete:focus,
+.table_close:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgb(117, 179, 218);
+}
+
+.table_edit {
+  background-image: url(../assets/image/edit.png);
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  height: 65px;
+  width: 65px;
+  border-radius: 15%;
+  border: 1px solid rgb(255, 255, 255);
+  cursor: pointer;
+}
+
+.table_delete {
+  background-image: url(../assets/image/delete.png);
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  height: 65px;
+  width: 65px;
+  border-radius: 15%;
+  border: 1px solid rgb(255, 255, 255);
+  cursor: pointer;
+}
+
+.table_close {
+  background-image: url(../assets/image/close.png);
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  height: 65px;
+  width: 65px;
+  border-radius: 15%;
+  border: 1px solid rgb(255, 255, 255);
+  cursor: pointer;
+}
+
+.table_buttons {
+  display: flex;
+  width: 18vw;
+  justify-content: flex-end;
+  align-items: center;
+  -moz-column-gap: 2rem;
+       column-gap: 2rem;
+}
+
+.container {
+  margin: 5%;
+}
+
+.table {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2%;
+  text-align: center;
+  font-family: "Merriweather", serif;
+  font-size: 1.2em;
+  line-height: 160%;
+  border: 10px solid rgb(82, 144, 205);
+  background: linear-gradient(rgb(80, 188, 177), 20%, rgb(28, 92, 194));
+  color: rgb(255, 255, 255);
+}
+
+.container__cards {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 5%;
+}
+
+.table_input {
+  height: 4vh;
+}
+
+.table_input--error {
+  border: 2px solid red;
+  height: 4vh;
+}
+
+.disabled {
+  border: 1px solid #999999;
+}
+
+.Nomatch {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  height: 50vh;
+  width: 15vw;
+  font-family: "Merriweather", serif;
+  font-size: 1.3em;
+  line-height: 16%;
+  border: 10px solid rgb(82, 144, 205);
+  background: linear-gradient(rgb(80, 188, 177), 20%, rgb(28, 92, 194));
+  color: rgb(255, 255, 255);
+  margin: 0% 0% 1% 38%;
+  padding: 2% 4% 4% 4%;
+  row-gap: 1rem;
+  border-radius: 15%;
+}
+.Nomatch p {
+  color: rgb(255, 255, 255);
+  font-family: "Merriweather", serif;
+}
+.Nomatch button {
+  height: 65px;
+  width: 15vw;
+  border-radius: 5%;
+  text-align: center;
+  font-family: "Merriweather", serif;
+  font-size: 1.1em;
+  border: 0px solid rgb(255, 255, 255);
+  background: linear-gradient(rgb(80, 188, 177), 20%, rgb(255, 255, 255));
+  color: rgb(28, 92, 194);
+  cursor: pointer;
+}
+.Nomatch button:hover {
+  height: 5vw;
+  width: 16vw;
+  box-shadow: 20%;
+}
+.Nomatch button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgb(117, 179, 218);
+}
+
+.cardlearn {
+  display: flex;
+  align-items: center;
+  margin-left: 8%;
+  font-family: "Merriweather", serif;
+  font-size: 1.4em;
+  line-height: 160%;
+  color: rgb(28, 92, 194);
+}/*# sourceMappingURL=allstyle.css.map */

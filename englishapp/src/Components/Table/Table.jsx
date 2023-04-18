@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { motion } from "framer-motion";
 import { useForm } from "react-hook-form";
 import { Context } from "../Context.js";
@@ -6,13 +6,12 @@ import "./table.module.scss";
 
 export default function Table(props) {
   const { id, english, transcription, russian } = props;
-  const [pressed, setPressed] = useState(false);
-  const [state, setState] = useState(props);
-  //const { updateWord } = useContext(Context);
-  const { editWords } = useContext(Context);
-
-  // const methods = useForm();
-  // const method = useFormContext();
+  //const [pressed, setPressed] = useState(false);
+  //const [state, setState] = useState(props);
+  const { updateWord } = useContext(Context);
+  const [isEdit, setIsEdit] = useState(false);
+  const [inputText, setInputText] = useState(props);
+  const [isEmpty, setIsEmpty] = useState(true);
 
   const {
     register,
@@ -23,50 +22,64 @@ export default function Table(props) {
   });
 
   const onSubmit = async (id) => {
-    // const formData = new FormData();
-    // formData.append("english", id.english);
-    // formData.append("transcription", id.transcription);
-    // formData.append("russian", id.russian);
-
-    // fetch(`http://itgirlschool.justmakeit.ru/api/words/${id}/update`, {
-    //   method: "POST",
-    //   body: JSON.stringify(formData),
-    // })
-    //   .then((response) => {
-    //     console.log(response);
-    //   })
-    //   .catch((error) => {
-    //     console.error(error);
-    //   });
-
-    //addWords(state);
-    //setState();
     console.log(id); //здесь выводятся данные, если заполнено всё верно
   };
 
-  const handleChange = () => {
-    setPressed(!pressed);
-  };
+  // const handleChange = () => {
+  //   setPressed(!pressed);
+  // };
 
   const handleChangeInput = (event) => {
-    setState({
-      ...state,
-      [event.target.dataset.name]: event.target.value,
+    setInputText({
+      ...inputText,
+      [event.target.name]: event.target.value,
     });
   };
 
-  const handleChangeSave = (event) => {
-    event.preventDefault();
-    onSubmit();
+  useEffect(() => {
     if (
-      state.english !== "" &&
-      state.transcription !== "" &&
-      state.russian !== ""
+      (inputText.id === "",
+      inputText.english === "",
+      inputText.transcription === "",
+      inputText.russian === "")
     ) {
-      setPressed(!pressed);
+      setIsEmpty(true);
+    } else {
+      setIsEmpty(false);
     }
-    editWords(state);
+  }, [inputText]);
+
+  const errorClass = (value) => {
+    return typeof value === "string" && value.trim() === "" ? "error" : "";
   };
+
+  function onEditClick() {
+    setIsEdit(!isEdit);
+  }
+
+  function onCancelClick() {
+    setInputText(props);
+    setIsEdit(!isEdit);
+  }
+
+  //вывести в консоль сообщение с параметрами формы и закрыть режим редактирования
+  function onSaveClick() {
+    if (
+      (inputText.id === "",
+      inputText.english === "",
+      inputText.transcription === "",
+      inputText.russian === "",
+      inputText.tags === "")
+    ) {
+      alert("Error: Please fill in all the fields");
+    } else {
+      console.log("Form parameters:", inputText);
+      updateWord(inputText);
+      setIsEdit(false); // закрывает режим редактирования
+    }
+  }
+  // const methods = useForm();
+  // const method = useFormContext();
 
   const ondelete = () => {
     props.onDelete(props.id);
@@ -83,16 +96,28 @@ export default function Table(props) {
       >
         <div className="table_number">№ {props.number}</div>
 
-        {pressed ? (
+        {isEdit ? (
           <>
+            <p className="form-control">
+              <input
+                type="text"
+                value={inputText.id}
+                name="id"
+                className={`card-input ${errorClass(inputText.id)}`}
+                onChange={handleChangeInput}
+              />
+            </p>
             <div className="form-control">
               <input
-                className={`"table_input" ${
+                className={`card-input ${
                   errors.english && "table_input--error"
                 }`}
+                //  className={`table_input ${errorClass(
+                //   inputText.english && "table_input--error"
+                // )}`}
                 type="text"
                 name="english"
-                data-name={"english"}
+                value={inputText.english}
                 onChange={handleChangeInput}
                 {...register("english", {
                   required: true,
@@ -169,26 +194,26 @@ export default function Table(props) {
             <div className="table_buttons">
               <button
                 //type="submit"
-                //onClick={handleChange}
-                onClick={handleChangeSave}
+                onClick={onSaveClick}
                 // onClick={handleSubmit((data) => console.log(data))}
-                className={` table_save ${errors.english && "disabled"}`}
+                className={` table_save ${isEmpty ? "disabled" : ""}`}
               ></button>
-              <button className="table_close" onClick={handleChange}></button>
+              <button className="table_close" onClick={onCancelClick}></button>
             </div>
           </>
         ) : (
           <>
+            <p className="table_transcription">{id}</p>
             <div>
-              <h2 className="table_title"> {props.english}</h2>
+              <h2 className="table_title"> {english}</h2>
             </div>
 
-            <p className="table_transcription">{props.transcription}</p>
+            <p className="table_transcription">{transcription}</p>
 
-            <div className="table_russian">{props.russian}</div>
+            <div className="table_russian">{russian}</div>
 
             <div className="table_buttons">
-              <button className="table_edit" onClick={handleChange}></button>
+              <button className="table_edit" onClick={onEditClick}></button>
               <button className="table_delete" onClick={ondelete}></button>
             </div>
           </>
@@ -197,3 +222,45 @@ export default function Table(props) {
     </>
   );
 }
+
+// const handleChangeInput = (event) => {
+//   setState({
+//     ...state,
+//     [event.target.dataset.name]: event.target.value,
+//   });
+// };
+
+// const handleChangeSave = (event) => {
+//   event.preventDefault();
+//   onSubmit();
+//   if (
+//     state.english !== "" &&
+//     state.transcription !== "" &&
+//     state.russian !== ""
+//   ) {
+//     setPressed(!pressed);
+//   }
+//   editWords(state);
+// };
+
+// const onSubmit = async (id) => {
+//   // const formData = new FormData();
+//   // formData.append("english", id.english);
+//   // formData.append("transcription", id.transcription);
+//   // formData.append("russian", id.russian);
+
+//   // fetch(`http://itgirlschool.justmakeit.ru/api/words/${id}/update`, {
+//   //   method: "POST",
+//   //   body: JSON.stringify(formData),
+//   // })
+//   //   .then((response) => {
+//   //     console.log(response);
+//   //   })
+//   //   .catch((error) => {
+//   //     console.error(error);
+//   //   });
+
+//   //addWords(state);
+//   //setState();
+//   console.log(id); //здесь выводятся данные, если заполнено всё верно
+// };

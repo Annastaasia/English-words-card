@@ -1,0 +1,68 @@
+.table_save {
+  background-image: url(../assets/image/save.png);
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  height: 65px;
+  width: 65px;
+  border-radius: 15%;
+  border: 1px solid rgb(255, 255, 255);
+  cursor: pointer;
+}
+
+.table_save:hover,
+.table_edit:hover,
+.table_delete:hover,
+.table_close:hover {
+  height: 68px;
+  width: 68px;
+}
+
+.table_save:focus,
+.table_edit:focus,
+.table_delete:focus,
+.table_close:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgb(117, 179, 218);
+}
+
+.table_edit {
+  background-image: url(../assets/image/edit.png);
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  height: 65px;
+  width: 65px;
+  border-radius: 15%;
+  border: 1px solid rgb(255, 255, 255);
+  cursor: pointer;
+}
+
+.table_delete {
+  background-image: url(../assets/image/delete.png);
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  height: 65px;
+  width: 65px;
+  border-radius: 15%;
+  border: 1px solid rgb(255, 255, 255);
+  cursor: pointer;
+}
+
+.table_close {
+  background-image: url(../assets/image/close.png);
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  height: 65px;
+  width: 65px;
+  border-radius: 15%;
+  border: 1px solid rgb(255, 255, 255);
+  cursor: pointer;
+}
+
+.table_buttons {
+  display: flex;
+  width: 18vw;
+  justify-content: flex-end;
+  align-items: center;
+  -moz-column-gap: 2rem;
+       column-gap: 2rem;
+}/*# sourceMappingURL=button.module.css.map */

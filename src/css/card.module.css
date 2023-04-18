@@ -1,0 +1,90 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  font-family: "Merriweather", serif;
+  height: 42vh;
+  width: 28vw;
+  font-size: 1.2em;
+  line-height: 160%;
+  border: 10px solid rgb(82, 144, 205);
+  background: linear-gradient(rgb(80, 188, 177), 20%, rgb(28, 92, 194));
+  color: rgb(255, 255, 255);
+  margin: 0% 20% 1% 20%;
+  padding: 2% 4% 4% 4%;
+  row-gap: 1.8rem;
+  border-radius: 15%;
+}
+
+.container__onecard {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 0% 23% 1% 23%;
+}
+
+.card-answer {
+  height: 7vh;
+  width: 11vw;
+  border-radius: 5%;
+  text-align: center;
+  font-family: "Merriweather", serif;
+  font-size: 1.1em;
+  border: 0px solid rgb(255, 255, 255);
+  background: linear-gradient(rgb(80, 188, 177), 20%, rgb(255, 255, 255));
+  color: rgb(28, 92, 194);
+  cursor: pointer;
+}
+
+.card-answer:hover {
+  background: linear-gradient(rgb(80, 188, 177), 60%, rgb(255, 255, 255));
+  box-shadow: 20%;
+}
+
+.card-answer:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgb(82, 144, 205);
+}
+
+.card-counter {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 0% 15% 0% 15%;
+  font-family: "Merriweather", serif;
+  font-size: 1.5em;
+  color: rgb(28, 92, 194);
+}
+
+.card-learned {
+  display: flex;
+  align-items: center;
+  margin-left: 9%;
+}
+
+.card-learned-btn {
+  height: 7vh;
+  width: 11vw;
+  border-radius: 5%;
+  text-align: center;
+  font-family: "Merriweather", serif;
+  font-size: 1.1em;
+  border: 0px solid rgb(255, 255, 255);
+  background: linear-gradient(rgb(80, 188, 177), 20%, rgb(255, 255, 255));
+  color: rgb(28, 92, 194);
+  cursor: pointer;
+}
+
+.card-learned-btn:hover {
+  background: linear-gradient(rgb(80, 188, 177), 60%, rgb(255, 255, 255));
+  box-shadow: 20%;
+}
+
+.card-learned-btn:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgb(82, 144, 205);
+}/*# sourceMappingURL=card.module.css.map */
