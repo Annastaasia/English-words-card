@@ -8,7 +8,8 @@ export const Apiwords = (props) => {
     const [dictionary, SetDictionary] = useState([]);
     const [isLouding, SetIsloading] = useState(true);
     const [error, setError] = useState(false);
-    const [list, setList] = useState();
+    const [list, setList] = useState(dictionary);
+    //const [updatedWord, setUpdatedWord] = useState({});
     const styles = {
         height: "80vh",
         margin: "1% 13%",
@@ -105,7 +106,7 @@ export const Apiwords = (props) => {
                 body: JSON.stringify(newWord)
             });
             if (res.ok) {
-                let newList = [...list].map(item => {
+                const newList = [...list].map(item => {
                     if (item.id === id) {
                         item.english = dictionary.english;
                         item.transcription = dictionary.transcription;
@@ -123,6 +124,20 @@ export const Apiwords = (props) => {
             // Очищаем поля
         }
     }
+
+
+    const deleteWords = (id) => {
+        fetch(`http://itgirlschool.justmakeit.ru/api/words/${id}/delete`, {
+            method: "POST",
+        })
+            .then(() => {
+                getWords();
+            })
+            .catch((errors) => setError(errors));
+    };
+
+
+
 
 
     // const addWords = async () => {
@@ -170,7 +185,7 @@ export const Apiwords = (props) => {
 
 
     return (
-        <Context.Provider value={{ dictionary, isLouding, SetDictionary, error, addWord, updateWord }}>
+        <Context.Provider value={{ dictionary, isLouding, SetDictionary, error, addWord, updateWord, deleteWords }}>
             {props.children}
         </Context.Provider>
     )

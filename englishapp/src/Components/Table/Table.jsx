@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { motion } from "framer-motion";
 import { useForm } from "react-hook-form";
 import { Context } from "../Context.js";
@@ -6,8 +6,13 @@ import "./table.module.scss";
 
 export default function Table(props) {
   const [pressed, setPressed] = useState(false);
-  const [state, setState] = useState();
-  const { updateWord } = useContext(Context);
+  const [state, setState] = useState(props);
+  //const { updateWord } = useContext(Context);
+  const { editWords, dictionary, deleteWords } = useContext(Context);
+  const [wordCollection, setwordCollection] = useState(dictionary);
+
+  // const methods = useForm();
+  // const method = useFormContext();
 
   const {
     register,
@@ -17,10 +22,26 @@ export default function Table(props) {
     mode: "onChange",
   });
 
-  const onSubmit = (data) => {
+  const onSubmit = async (id) => {
+    // const formData = new FormData();
+    // formData.append("english", id.english);
+    // formData.append("transcription", id.transcription);
+    // formData.append("russian", id.russian);
+
+    // fetch(`http://itgirlschool.justmakeit.ru/api/words/${id}/update`, {
+    //   method: "POST",
+    //   body: JSON.stringify(formData),
+    // })
+    //   .then((response) => {
+    //     console.log(response);
+    //   })
+    //   .catch((error) => {
+    //     console.error(error);
+    //   });
+
     //addWords(state);
     //setState();
-    console.log(data); //здесь выводятся данные, если заполнено всё верно
+    console.log(id); //здесь выводятся данные, если заполнено всё верно
   };
 
   const handleChange = () => {
@@ -36,11 +57,23 @@ export default function Table(props) {
 
   const handleChangeSave = (event) => {
     event.preventDefault();
-
     onSubmit();
-    setPressed(!pressed);
+    if (
+      state.english !== "" &&
+      state.transcription !== "" &&
+      state.russian !== ""
+    ) {
+      setPressed(!pressed);
+    }
+    editWords(state);
+  };
 
-    updateWord(state);
+  useEffect(() => {
+    setwordCollection(dictionary);
+  }, [dictionary]);
+
+  const onDelete = (id) => {
+    deleteWords(id);
   };
 
   return (
@@ -142,6 +175,7 @@ export default function Table(props) {
                 //type="submit"
                 //onClick={handleChange}
                 onClick={handleChangeSave}
+                // onClick={handleSubmit((data) => console.log(data))}
                 className={` table_save ${errors.english && "disabled"}`}
               ></button>
               <button className="table_close" onClick={handleChange}></button>
@@ -159,7 +193,10 @@ export default function Table(props) {
 
             <div className="table_buttons">
               <button className="table_edit" onClick={handleChange}></button>
-              <button className="table_delete"></button>
+              <button
+                className="table_delete"
+                onClick={() => onDelete(props.id)}
+              ></button>
             </div>
           </>
         )}
