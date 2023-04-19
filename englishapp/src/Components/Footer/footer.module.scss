@@ -1,0 +1,17 @@
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  column-gap: 1.5rem;
+  height: 12vh;
+  margin: 0% 5% 1% 5%;
+  padding: 1% 2%;
+  border-radius: 1%;
+  @include fixColor;
+
+  p {
+    color: rgb(255, 255, 255);
+    font-size: 4vw;
+    font-family: "Merriweather", serif;
+  }
+}
