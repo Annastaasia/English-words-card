@@ -2,10 +2,11 @@ import React, { useState, useContext, useEffect } from "react";
 import { motion } from "framer-motion";
 import { useForm } from "react-hook-form";
 import { Context } from "../Context.js";
+
 import "./table.module.scss";
 
 export default function Table(props) {
-  const { id, english, transcription, russian } = props;
+  const { english, transcription, russian } = props;
   //const [pressed, setPressed] = useState(false);
   //const [state, setState] = useState(props);
   const { updateWord } = useContext(Context);
@@ -21,8 +22,8 @@ export default function Table(props) {
     mode: "onChange",
   });
 
-  const onSubmit = async (id) => {
-    console.log(id); //здесь выводятся данные, если заполнено всё верно
+  const onSubmit = async (data) => {
+    console.log(data); //здесь выводятся данные, если заполнено всё верно
   };
 
   // const handleChange = () => {
@@ -49,9 +50,9 @@ export default function Table(props) {
     }
   }, [inputText]);
 
-  const errorClass = (value) => {
-    return typeof value === "string" && value.trim() === "" ? "error" : "";
-  };
+  // const errorClass = (value) => {
+  //   return typeof value === "string" && value.trim() === "" ? "error" : "";
+  // };
 
   function onEditClick() {
     setIsEdit(!isEdit);
@@ -98,15 +99,6 @@ export default function Table(props) {
 
         {isEdit ? (
           <>
-            <p className="form-control">
-              <input
-                type="text"
-                value={inputText.id}
-                name="id"
-                className={`card-input ${errorClass(inputText.id)}`}
-                onChange={handleChangeInput}
-              />
-            </p>
             <div className="form-control">
               <input
                 className={`card-input ${
@@ -117,7 +109,7 @@ export default function Table(props) {
                 // )}`}
                 type="text"
                 name="english"
-                value={inputText.english}
+                // value={inputText.english}
                 onChange={handleChangeInput}
                 {...register("english", {
                   required: true,
@@ -144,7 +136,6 @@ export default function Table(props) {
                 }`}
                 type="text"
                 name="transcription"
-                data-name={"transcription"}
                 onChange={handleChangeInput}
                 {...register("transcription", {
                   required: true,
@@ -203,7 +194,6 @@ export default function Table(props) {
           </>
         ) : (
           <>
-            <p className="table_transcription">{id}</p>
             <div>
               <h2 className="table_title"> {english}</h2>
             </div>

@@ -1,6 +1,6 @@
 import React, { createContext, useState, useEffect } from "react";
-import loading from "../assets/image/loading.gif";
-import "../style/context.module.scss";
+import Louder from "./Louder";
+import Error from "./Error";
 
 export const Context = createContext();
 
@@ -10,16 +10,7 @@ export const Apiwords = (props) => {
     const [error, setError] = useState(false);
     //const [list, setList] = useState(dictionary);
     const [updatedWord, setUpdatedWord] = useState({});
-    const styles = {
-        height: "80vh",
-        margin: "1% 13%",
-    };
 
-    const styles__p = {
-        margin: "4% 46%",
-        color: "rgb(28, 92, 194)",
-        fontSize: "2.5em"
-    };
 
     useEffect(() => {
         fetch("http://itgirlschool.justmakeit.ru/api/words")
@@ -107,30 +98,18 @@ export const Apiwords = (props) => {
     }
 
     if (isLouding) {
-        return <div className="Container">
-            <p style={styles__p}>Loading...</p>
-            <img
-                src={loading}
-                alt="loading"
-                style={styles}
-            /></div >
+        return <Louder />
     }
 
     if (error) {
-        return <div className="Container">
-            <p style={styles__p}>Error</p>
-            <img
-                src={loading}
-                alt="loading"
-                style={styles}
-            /></div >
+        return <Error />
     }
 
 
     return (
         <Context.Provider value={{
             dictionary, isLouding, SetDictionary, error, addWord, updateWord, deleteWord, updatedWord,
-            setUpdatedWord,
+            setUpdatedWord
         }}>
             {props.children}
         </Context.Provider>
