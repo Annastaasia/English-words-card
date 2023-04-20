@@ -23,9 +23,23 @@
   justify-content: space-between;
   margin: 5%;
 }
+.table-number {
+  margin-left: 5%;
+}
 
-.table_input {
-  height: 4vh;
+.table-input {
+  max-width: 10%;
+  min-height: 3vh;
+  border-radius: 5%;
+  padding: 0.2% 0.5%;
+  border: #999999;
+  text-align: center;
+}
+
+.table-input:active,
+.table-input:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgb(80, 188, 177);
 }
 
 .table_input--error {
@@ -36,4 +50,19 @@
 .disabled {
   border: 1px solid #999999;
   //opacity: 10%;
+}
+
+.form-input {
+  max-width: 10%;
+  min-height: 3vh;
+  border-radius: 5%;
+  padding: 0.2% 0.5%;
+  border: #999999;
+  text-align: center;
+}
+
+.form-input:active,
+.form-input:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgb(80, 188, 177);
 }

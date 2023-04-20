@@ -7,7 +7,7 @@ export const Context = createContext();
 export const Apiwords = (props) => {
     const [dictionary, SetDictionary] = useState([]);
     const [isLouding, SetIsLoading] = useState(true);
-    const [error, setError] = useState(false);
+    const [error, setError] = useState(null);
     //const [list, setList] = useState(dictionary);
     const [updatedWord, setUpdatedWord] = useState({});
 
@@ -80,7 +80,7 @@ export const Apiwords = (props) => {
         fetch(
             `http://itgirlschool.justmakeit.ru/api/words/${updatedWord.id}/delete`,
             {
-                method: "POST",
+                method: "DELETE",
             }
         )
             .then((response) => {

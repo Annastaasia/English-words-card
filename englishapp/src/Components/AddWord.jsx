@@ -1,10 +1,23 @@
-import React, { useState, useContext } from "react";
-import { Context } from "./Context.js";
+import React, { useState } from "react";
+// import { Context } from "./Context.js";
 import { motion } from "framer-motion";
+// import { useForm } from "react-hook-form";
 
 export default function AddWord(props) {
-  const { addWords } = useContext(Context);
+  // const { addWords } = useContext(Context);
   const [state, setState] = useState();
+
+  // const {
+  //   register,
+  //   handleSubmit,
+  //   formState: { errors },
+  // } = useForm({
+  //   mode: "onChange",
+  // });
+
+  const onSubmit = (data) => {
+    console.log(data); //здесь выводятся данные, если заполнено всё верно
+  };
 
   const handleChangeInput = (event) => {
     setState({
@@ -16,21 +29,6 @@ export default function AddWord(props) {
       alert("Пожалуйста, вводите только буквы");
     } else if (event.target.value === "") {
       alert("Пожалуйста, заполните все поля");
-    }
-  };
-
-  const clearForm = () => {
-    setState();
-  };
-
-  const onSubmit = () => {
-    if (
-      state.english !== "" &&
-      state.transcription !== "" &&
-      state.russian !== ""
-    ) {
-      addWords(state);
-      setState();
     }
   };
 
@@ -46,43 +44,65 @@ export default function AddWord(props) {
         >
           <div className="table_number">Add new word:</div>
 
-          <div className="form-control">
-            <input
-              type="text"
-              className="card-input"
-              placeholder="English word"
-              name="english"
-              onChange={handleChangeInput}
-            />
-          </div>
-          <div className="form-control">
-            <input
-              type="text"
-              className="card-input"
-              placeholder="Transcription word"
-              name="transcription"
-              onChange={handleChangeInput}
-            />
-          </div>
-          <div className="form-control">
-            <input
-              type="text"
-              className="card-input"
-              placeholder="Russian word"
-              name="russian"
-              onChange={handleChangeInput}
-            />
-          </div>
+          <input
+            type="text"
+            className="form-input"
+            placeholder="English word"
+            name="english"
+            onChange={handleChangeInput}
+          />
+
+          <input
+            type="text"
+            className="form-input"
+            placeholder="Transcription word"
+            name="transcription"
+            onChange={handleChangeInput}
+          />
+
+          {/* <div className="form-control"> */}
+          <input
+            type="text"
+            className="form-input"
+            placeholder="Russian word"
+            name="russian"
+            onChange={handleChangeInput}
+          />
+          {/* </div>
+          <div className="form-control"> */}
+          <input
+            type="text"
+            className="form-input"
+            placeholder="Tags"
+            name="tags"
+            onChange={handleChangeInput}
+          />
+          {/* </div> */}
           <div className="table_buttons">
             <button
-              //type="submit"
+              type="button"
               onClick={onSubmit}
               className="table_save"
             ></button>
-            <button className="table_close" onClick={clearForm}></button>
+            <button className="table_close"></button>
           </div>
         </motion.form>
       </main>
     </>
   );
 }
+
+// const clearForm = () => {
+//   setState();
+// };
+
+// const onSubmit = () => {
+//   if (
+//     state.english !== "" &&
+//     state.transcription !== "" &&
+//     state.russian !== ""
+//   ) {
+//     addWords(state);
+//     setState();
+//   }
+// };
