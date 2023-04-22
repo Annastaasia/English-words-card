@@ -3,11 +3,11 @@ import {
   Routes,
   Route,
 } from "react-router-dom";
-import Header from "./cccomponents/Header/Header";
-import TableMap from "./cccomponents/TableMap";
+import Header from "./components/Header/Header";
+import TableMap from "./components/TableMap";
 import CardLearn from "./components/CardLearn/CardLearn";
-import NoMatch from "./cccomponents/NoMatch/NoMatch";
-import Footer from "./cccomponents/Footer/Footer";
+import NoMatch from "./components/NoMatch/NoMatch";
+import Footer from "./components/Footer/Footer";
 import "./style/allstyle.scss";
 
 
