@@ -5,15 +5,6 @@ import AddWord from "./AddWord.jsx";
 
 export default function TableMap() {
   const { dictionary } = useContext(Context);
-  // const [list, setList] = useState(dictionary);
-
-  // useEffect(() => {
-  //   setList(dictionary);
-  // }, [dictionary]);
-
-  // const onDelete = (id) => {
-  //   deleteWords(id);
-  // };
 
   return (
     <main>
@@ -29,7 +20,6 @@ export default function TableMap() {
               transcription={card.transcription}
               russian={card.russian}
               tags={card.tags}
-              // onDelete={onDelete}
             />
           ))}
         </div>

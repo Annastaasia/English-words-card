@@ -5,10 +5,10 @@ import { Context } from "../Context.js";
 import "./table.module.scss";
 
 export default function Table(props) {
-  const { english, transcription, russian, tags } = props;
+  const { id, english, transcription, russian, tags } = props;
   //const [pressed, setPressed] = useState(false);
   //const [state, setState] = useState(props);
-  const { updateWord } = useContext(Context);
+  const { updateWord, deleteWord } = useContext(Context);
   const [isEdit, setIsEdit] = useState(false);
   const [inputText, setInputText] = useState(props);
   const [isEmpty, setIsEmpty] = useState(true);
@@ -80,9 +80,14 @@ export default function Table(props) {
     }
   }
 
-  const ondelete = () => {
-    props.onDelete(props.id);
-  };
+  // const ondelete = () => {
+  //   props.onDelete(props.id);
+  // };
+
+  // const onDelete = (props) => {
+  //   console.log(props);
+  //   deleteWord(props);
+  // };
 
   return (
     <>
@@ -222,7 +227,10 @@ export default function Table(props) {
 
             <div className="table_buttons">
               <button className="table_edit" onClick={onEditClick}></button>
-              <button className="table_delete" onClick={ondelete}></button>
+              <button
+                className="table_delete"
+                onClick={() => deleteWord(id)}
+              ></button>
             </div>
           </>
         )}

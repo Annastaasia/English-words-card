@@ -4,11 +4,11 @@ import "../style/context.module.scss";
 export default function Error() {
   const styles = {
     height: "80vh",
-    margin: "1% 13%",
+    margin: "1% 31%",
   };
 
   const styles__p = {
-    margin: "4% 46%",
+    margin: "2% 34%",
     color: "rgb(28, 92, 194)",
     fontSize: "2.5em",
   };

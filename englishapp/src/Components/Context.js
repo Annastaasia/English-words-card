@@ -8,7 +8,6 @@ export const Apiwords = (props) => {
     const [dictionary, SetDictionary] = useState([]);
     const [isLouding, SetIsLoading] = useState(true);
     const [error, setError] = useState(null);
-    //const [list, setList] = useState(dictionary);
     const [updatedWord, setUpdatedWord] = useState({});
 
 
@@ -26,27 +25,32 @@ export const Apiwords = (props) => {
             });
     }, [dictionary]);
 
-    const addWord = (newWord) => {
-        SetIsLoading(true); // set isLoading to true before making the API call
-        fetch("http://itgirlschool.justmakeit.ru/api/words/add", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(newWord),
-        })
-            .then((response) => response.json())
-            .then((data) => {
-                SetDictionary((prevDictionary) => [...prevDictionary, data]);
-            })
-            .catch((error) => {
-                console.error("Error adding word: ", error);
-                setError(error);
-            })
-            .finally(() => {
-                SetIsLoading(false); // set isLoading to false after the API call is complete
+
+
+
+
+    const addWord = async (newWord) => {
+        // Получаем значения полей
+        try {
+            const res = await fetch("http://itgirlschool.justmakeit.ru/api/words/add", {
+                mode: "no-cors",
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(newWord)
             });
-    };
+            if (res.status === 200) {
+                dictionary.push(newWord);
+                SetDictionary([...dictionary]);
+            }
+        } catch (error) {
+            console.error("Error adding word: ", error);
+            setError(error); // Обработка ошибок соединения с сервером
+        } finally {
+            SetIsLoading(false);
+        }
+    }
 
     const updateWord = (updatedWord) => {
         console.log(updatedWord);
@@ -74,19 +78,21 @@ export const Apiwords = (props) => {
             });
     };
 
-
-    const deleteWord = (updatedWord) => {
+    const deleteWord = (id) => {
         SetIsLoading(true);
+        // console.log(updatedWord)
         fetch(
-            `http://itgirlschool.justmakeit.ru/api/words/${updatedWord.id}/delete`,
+            `http://itgirlschool.justmakeit.ru/api/words/${id}/delete`,
             {
-                method: "DELETE",
+                method: "POST",
             }
         )
             .then((response) => {
                 if (!response.ok) {
                     throw new Error("Failed to delete word");
                 }
+                const newDictionary = [...dictionary].filter((item) => item.id !== id)
+                SetDictionary(newDictionary)
             })
             .catch((error) => {
                 console.error("Error deleting word: ", error);
@@ -108,7 +114,7 @@ export const Apiwords = (props) => {
 
     return (
         <Context.Provider value={{
-            dictionary, isLouding, SetDictionary, error, addWord, updateWord, deleteWord, updatedWord,
+            dictionary, isLouding, SetDictionary, error, addWord, deleteWord, updateWord, updatedWord,
             setUpdatedWord
         }}>
             {props.children}
@@ -117,7 +123,7 @@ export const Apiwords = (props) => {
 
 }
 
-
+// updateWord
 
 
 // useEffect(() => {
@@ -291,4 +297,30 @@ export const Apiwords = (props) => {
     //         alert(`Ошибка соединения с сервером. ${e}`); // Обработка ошибок соединения с сервером
     //     } finally {
     //         // Очищаем поля
-    //     }
+        // }
+
+
+            // const addWord = (newWord) => {
+    //     console.log(newWord)
+    //     SetIsLoading(true);
+    //     fetch("http://itgirlschool.justmakeit.ru/api/words/add", {
+    //         mode: "no-cors",
+    //         method: "POST",
+    //         headers: {
+    //             "Content-Type": "application/json",
+    //         },
+    //         body: JSON.stringify(newWord)
+    //     })
+    //         .then((response) => response.json())
+    //         .then(() => {
+    //             dictionary.push(newWord);
+    //             SetDictionary([...dictionary]);
+    //         })
+    //         .catch((error) => {
+    //             console.error("Error adding word: ", error);
+    //             setError(error);
+    //         })
+    //         .finally(() => {
+    //             SetIsLoading(false);
+    //         });
+    // };

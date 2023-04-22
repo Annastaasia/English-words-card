@@ -1,28 +1,17 @@
-import React, { useState } from "react";
-// import { Context } from "./Context.js";
+import React, { useState, useContext, useEffect } from "react";
+import { Context } from "./Context.js";
 import { motion } from "framer-motion";
 // import { useForm } from "react-hook-form";
 
 export default function AddWord(props) {
-  // const { addWords } = useContext(Context);
-  const [state, setState] = useState();
-
-  // const {
-  //   register,
-  //   handleSubmit,
-  //   formState: { errors },
-  // } = useForm({
-  //   mode: "onChange",
-  // });
-
-  const onSubmit = (data) => {
-    console.log(data); //здесь выводятся данные, если заполнено всё верно
-  };
+  const { addWord } = useContext(Context);
+  const [inputText, setInputText] = useState(props);
+  const [isEmpty, setIsEmpty] = useState(true);
 
   const handleChangeInput = (event) => {
-    setState({
-      ...state,
-      [event.target.dataset.name]: event.target.value,
+    setInputText({
+      ...inputText,
+      [event.target.name]: event.target.value,
     });
 
     if (event.target.value.match(/[0-9]/)) {
@@ -32,12 +21,47 @@ export default function AddWord(props) {
     }
   };
 
+  useEffect(() => {
+    if (
+      inputText.english === "" ||
+      inputText.transcription === "" ||
+      inputText.russian === "" ||
+      inputText.tags === ""
+    ) {
+      setIsEmpty(true);
+    } else {
+      setIsEmpty(false);
+    }
+  }, [inputText]);
+
+  // const errorClass = (value) => {
+  //   return typeof value === "string" && value.trim() === "" ? "error" : "";
+  // };
+
+  function onSubmit() {
+    if (
+      inputText.english === "" ||
+      inputText.transcription === "" ||
+      inputText.russian === "" ||
+      inputText.tags === ""
+    ) {
+      alert("Error: Please fill in all the fields");
+    } else {
+      console.log("Form parameters:", inputText);
+      addWord(inputText);
+      setIsEmpty();
+    }
+  }
+
+  const clearForm = () => {
+    setIsEmpty();
+  };
+
   return (
     <>
       <main className="container">
         <motion.form
           className="table"
-          onSubmit={onSubmit}
           initial={{ opacity: 0, scale: 3 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1 }}
@@ -46,45 +70,47 @@ export default function AddWord(props) {
 
           <input
             type="text"
-            className="form-input"
+            className={`form-input ${inputText.english}`}
             placeholder="English word"
             name="english"
+            value={inputText.english || ""}
             onChange={handleChangeInput}
           />
 
           <input
             type="text"
-            className="form-input"
+            className={`form-input ${inputText.transcription}`}
             placeholder="Transcription word"
             name="transcription"
+            value={inputText.transcription || ""}
             onChange={handleChangeInput}
           />
 
-          {/* <div className="form-control"> */}
           <input
             type="text"
-            className="form-input"
+            className={`form-input ${inputText.russian}`}
             placeholder="Russian word"
             name="russian"
+            value={inputText.russian || ""}
             onChange={handleChangeInput}
           />
-          {/* </div>
-          <div className="form-control"> */}
+
           <input
             type="text"
-            className="form-input"
+            className={`form-input ${inputText.tags}`}
             placeholder="Tags"
             name="tags"
+            value={inputText.tags || ""}
             onChange={handleChangeInput}
           />
-          {/* </div> */}
+
           <div className="table_buttons">
             <button
               type="button"
               onClick={onSubmit}
-              className="table_save"
+              className={` table_save ${isEmpty ? "disabled" : ""}`}
             ></button>
-            <button className="table_close"></button>
+            <button className="table_close" onClick={clearForm}></button>
           </div>
         </motion.form>
       </main>
@@ -92,17 +118,14 @@ export default function AddWord(props) {
   );
 }
 
-// const clearForm = () => {
-//   setState();
-// };
+// const {
+//   register,
+//   handleSubmit,
+//   formState: { errors },
+// } = useForm({
+//   mode: "onChange",
+// });
 
-// const onSubmit = () => {
-//   if (
-//     state.english !== "" &&
-//     state.transcription !== "" &&
-//     state.russian !== ""
-//   ) {
-//     addWords(state);
-//     setState();
-//   }
+// const onSubmit = (data) => {
+//   console.log(data); //здесь выводятся данные, если заполнено всё верно
 // };
