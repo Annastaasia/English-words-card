@@ -3,11 +3,11 @@ import {
   Routes,
   Route,
 } from "react-router-dom";
-import { Apiwords } from "./components/Context";
-import Header from "./components/Header/Header";
-import TableMap from "./components/TableMap";
-import CardLearn from "./components/CardLearn/CardLearn";
-import NoMatch from "./components/NoMatch/NoMatch";
+import { Apiwords } from "./Components/Context";
+import Header from "./Components/Header/Header";
+import TableMap from "./Components/TableMap";
+import CardLearn from "./Components/CardLearn/CardLearn";
+import NoMatch from "./Components/NoMatch/NoMatch";
 import "./style/allstyle.scss";
 
 

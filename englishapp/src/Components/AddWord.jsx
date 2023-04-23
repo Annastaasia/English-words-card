@@ -1,7 +1,6 @@
 import React, { useState, useContext, useEffect } from "react";
-import { Context } from "./Context.js";
+import { Context } from "../Components/Context.js";
 import { motion } from "framer-motion";
-// import { useForm } from "react-hook-form";
 
 export default function AddWord(props) {
   const { addWord } = useContext(Context);
@@ -117,15 +116,3 @@ export default function AddWord(props) {
     </>
   );
 }
-
-// const {
-//   register,
-//   handleSubmit,
-//   formState: { errors },
-// } = useForm({
-//   mode: "onChange",
-// });
-
-// const onSubmit = (data) => {
-//   console.log(data); //здесь выводятся данные, если заполнено всё верно
-// };

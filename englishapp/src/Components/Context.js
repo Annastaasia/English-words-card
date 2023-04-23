@@ -26,11 +26,7 @@ export const Apiwords = (props) => {
     }, [dictionary]);
 
 
-
-
-
     const addWord = async (newWord) => {
-        // Получаем значения полей
         try {
             const res = await fetch("http://itgirlschool.justmakeit.ru/api/words/add", {
                 mode: "no-cors",
@@ -80,7 +76,6 @@ export const Apiwords = (props) => {
 
     const deleteWord = (id) => {
         SetIsLoading(true);
-        // console.log(updatedWord)
         fetch(
             `http://itgirlschool.justmakeit.ru/api/words/${id}/delete`,
             {
@@ -123,7 +118,20 @@ export const Apiwords = (props) => {
 
 }
 
-// updateWord
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 // useEffect(() => {
@@ -272,9 +280,6 @@ export const Apiwords = (props) => {
     //         // Очищаем поля
     //     }
     // }
-
-
-
 
 
     // const addWords = async () => {

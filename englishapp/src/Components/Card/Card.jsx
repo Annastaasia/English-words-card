@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from "react";
-//import cards from "../../utils/card.js";
 import { motion } from "framer-motion";
 import { useContext } from "react";
 import { Context } from "../Context";
@@ -83,9 +82,6 @@ function Card(props) {
             <div className="card-transcription">
               Transcription: {onecard.transcription}
             </div>
-
-            {/* <div className="card-hint"> Hint: {onecard.hint}</div> */}
-
             <div onClick={handleChange}>
               {pressed ? (
                 <div className="table_translate">{onecard.russian}</div>

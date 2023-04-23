@@ -1,33 +1,14 @@
 import React, { useState, useContext, useEffect } from "react";
 import { motion } from "framer-motion";
-// import { useForm } from "react-hook-form";
 import { Context } from "../Context.js";
 import "./table.module.scss";
 
 export default function Table(props) {
   const { id, english, transcription, russian, tags } = props;
-  //const [pressed, setPressed] = useState(false);
-  //const [state, setState] = useState(props);
   const { updateWord, deleteWord } = useContext(Context);
   const [isEdit, setIsEdit] = useState(false);
   const [inputText, setInputText] = useState(props);
   const [isEmpty, setIsEmpty] = useState(true);
-
-  // const {
-  //   register,
-  //   handleSubmit,
-  //   formState: { errors },
-  // } = useForm({
-  //   mode: "",
-  // });
-
-  // const onSubmit = (data) => {
-  //   console.log(data); //здесь выводятся данные, если заполнено всё верно
-  // };
-
-  // const handleChange = () => {
-  //   setPressed(!pressed);
-  // };
 
   const onChange = (event) => {
     setInputText({
@@ -63,7 +44,6 @@ export default function Table(props) {
     setIsEdit(!isEdit);
   }
 
-  //вывести в консоль сообщение с параметрами формы и закрыть режим редактирования
   function onSaveClick() {
     if (
       inputText.id === "" ||
@@ -80,20 +60,10 @@ export default function Table(props) {
     }
   }
 
-  // const ondelete = () => {
-  //   props.onDelete(props.id);
-  // };
-
-  // const onDelete = (props) => {
-  //   console.log(props);
-  //   deleteWord(props);
-  // };
-
   return (
     <>
       <motion.div
         className="table"
-        // onSubmit={handleSubmit(onSubmit)}
         initial={{ opacity: 0, scale: 3 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 1 }}
@@ -102,96 +72,27 @@ export default function Table(props) {
 
         {isEdit ? (
           <>
-            {/* <p className="table-input">
-                <input
-                  type="text"
-                  value={inputText.id}
-                  name="id"
-                  className={`card-input ${errorClass(inputText.id)}`}
-                  onChange={onChange}
-                />
-              </p> */}
             <input
-              // className={`table-input ${
-              //   errors.english && "table_input--error"
-              // }`}
-              // className={`table-input ${errorClass(inputText.id)}`}
               className={`table-input ${errorClass(inputText.english)}`}
               type="text"
               name="english"
               value={inputText.english}
               onChange={onChange}
-              // {...register("english", {
-              //   required: true,
-              //   validate: {
-              //     checkLength: (value) => value.length > 1,
-              //     matchPattern: (value) => /^[a-zA-Z-`]+$/.test(value),
-              //   },
-              // })}
             />
-            {/* {errors.english?.type === "checkLength" && (
-                <p className="errorMsg">
-                  English should be contain more than 1 character
-                </p>
-              )}
-              {errors.english?.type === "matchPattern" && (
-                <p className="errorMsg">Use latin letters</p>
-              )} */}
-
-            {/* <div className="form-control"> */}
             <input
-              // className={`"table_input" ${
-              //   errors.transcription && "table_input--error"
-              // }`}
               className={`table-input ${errorClass(inputText.transcription)}`}
               type="text"
               name="transcription"
               value={inputText.transcription}
               onChange={onChange}
-              // {...register("transcription", {
-              //   required: true,
-              //   validate: {
-              //     checkLength: (value) => value.length > 1,
-              //     matchPattern: (value) => /^[a-zA-Zəɪæɔ_ːˈ-]+$/.test(value),
-              //   },
-              // })}
             />
-            {/* {errors.transcription?.type === "checkLength" && (
-                <p className="errorMsg">
-                  Transcription should be at-least 1 characters
-                </p>
-              )}
-              {errors.transcription?.type === "matchPattern" && (
-                <p className="errorMsg">Use latin letters</p>
-              )} */}
-            {/* </div> */}
-
             <input
-              // className={`"table_input" ${
-              //   errors.russian && "table_input--error"
-              // }`}
               className={`table-input ${errorClass(inputText.russian)}`}
               type="text"
               name="russian"
               value={inputText.russian}
               onChange={onChange}
-              // {...register("russian", {
-              //   required: true,
-              //   validate: {
-              //     checkLength: (value) => value.length > 1,
-              //     matchPattern: (value) => /^[а-яА-Я-]+$/.test(value),
-              //   },
-              // })}
             />
-            {/* {errors.russian?.type === "checkLength" && (
-                <p className="errorMsg">
-                  Russian should be at-least 1 characters
-                </p>
-              )}
-              {errors.russian?.type === "matchPattern" && (
-                <p className="errorMsg">Use russian letters</p>
-              )} */}
-
             <input
               type="text"
               value={inputText.tags}
@@ -199,12 +100,10 @@ export default function Table(props) {
               className={`table-input ${errorClass(inputText.tags)}`}
               onChange={onChange}
             />
-
             <div className="table_buttons">
               <button
                 type="button"
                 onClick={onSaveClick}
-                // onClick={handleSubmit((data) => console.log(data))}
                 className={` table_save ${isEmpty ? "disabled" : ""}`}
               ></button>
               <button className="table_close" onClick={onCancelClick}></button>
@@ -212,9 +111,6 @@ export default function Table(props) {
           </>
         ) : (
           <>
-            {/* <p className="table_transcription">
-              <span className="table_transcription"> {id}</span>
-            </p> */}
             <div>
               <h2 className="table_title"> {english}</h2>
             </div>
@@ -242,7 +138,7 @@ export default function Table(props) {
 // const handleChangeInput = (event) => {
 //   setState({
 //     ...state,
-//     [event.target.dataset.name]: event.target.value,
+//     [event.target.name]: event.target.value,
 //   });
 // };
 
@@ -257,26 +153,4 @@ export default function Table(props) {
 //     setPressed(!pressed);
 //   }
 //   editWords(state);
-// };
-
-// const onSubmit = async (id) => {
-//   // const formData = new FormData();
-//   // formData.append("english", id.english);
-//   // formData.append("transcription", id.transcription);
-//   // formData.append("russian", id.russian);
-
-//   // fetch(`http://itgirlschool.justmakeit.ru/api/words/${id}/update`, {
-//   //   method: "POST",
-//   //   body: JSON.stringify(formData),
-//   // })
-//   //   .then((response) => {
-//   //     console.log(response);
-//   //   })
-//   //   .catch((error) => {
-//   //     console.error(error);
-//   //   });
-
-//   //addWords(state);
-//   //setState();
-//   console.log(id); //здесь выводятся данные, если заполнено всё верно
 // };
