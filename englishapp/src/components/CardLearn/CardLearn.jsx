@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Card from "../../cccomponents/Card/Card";
+import Card from "../../components/Card/Card";
 
 function CardLearn() {
   const [learnWords, setLearnWords] = useState(0);
