@@ -1,22 +1,17 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { useForm } from "react-hook-form";
 import "./table.module.scss";
+// import { useDispatch } from "react-redux";
 
 export default function Table(props) {
+  const [userEnglish, SetuserEnglish] = useState("");
+  const [userTranscription, SetuserTranscription] = useState("");
+  const [userRussian, SetuserRussian] = useState("");
+  const [userTags, SetuserTags] = useState("");
+
+  // const dispatch = useDispatch();
+
   const [pressed, setPressed] = useState(false);
-
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm({
-    mode: "onChange",
-  });
-
-  const onSubmit = (data) => {
-    console.log(data); //здесь выводятся данные, если заполнено всё верно
-  };
 
   const handleChange = () => {
     setPressed(!pressed);
@@ -26,95 +21,77 @@ export default function Table(props) {
     <>
       <motion.form
         className="table"
-        onSubmit={handleSubmit(onSubmit)}
         initial={{ opacity: 0, scale: 3 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 1 }}
       >
-        <div className="table_number">№ {props.number}</div>
+        <div className="table_number">№ {props.num}</div>
 
         {pressed ? (
           <>
             <div className="form-control">
               <input
-                className={`"table_input" ${
-                  errors.word && "table_input--error"
-                }`}
+                // className={`"table_input" ${
+                //   errors.english && "table_input--error"
+                // }`}
+                className="table_input"
                 type="text"
-                name="word"
-                {...register("word", {
-                  required: true,
-                  validate: {
-                    checkLength: (value) => value.length > 1,
-                    matchPattern: (value) => /^[a-zA-Z-`]+$/.test(value),
-                  },
-                })}
+                value={userEnglish}
+                onChange={(e) => SetuserEnglish(e.target.value)}
+                name="english"
+                // {...register("english", {
+                //   required: true,
+                //   validate: {
+                //     checkLength: (value) => value.length > 1,
+                //     matchPattern: (value) => /^[a-zA-Z-`]+$/.test(value),
+                //   },
+                // })}
               />
-              {errors.word?.type === "checkLength" && (
+              {/* {errors.english?.type === "checkLength" && (
                 <p className="errorMsg">
                   Word should be contain more than 1 character
                 </p>
               )}
-              {errors.word?.type === "matchPattern" && (
+              {errors.english?.type === "matchPattern" && (
                 <p className="errorMsg">Use latin letters</p>
-              )}
+              )} */}
             </div>
 
             <div className="form-control">
               <input
-                className={`"table_input" ${
-                  errors.transcription && "table_input--error"
-                }`}
+                className="table_input"
                 type="text"
+                value={userTranscription}
+                onChange={(e) => SetuserTranscription(e.target.value)}
                 name="transcription"
-                {...register("transcription", {
-                  required: true,
-                  validate: {
-                    checkLength: (value) => value.length > 1,
-                    matchPattern: (value) => /^[a-zA-Zəɪæɔ_ːˈ-]+$/.test(value),
-                  },
-                })}
               />
-              {errors.transcription?.type === "checkLength" && (
-                <p className="errorMsg">
-                  Transcription should be at-least 1 characters
-                </p>
-              )}
-              {errors.transcription?.type === "matchPattern" && (
-                <p className="errorMsg">Use latin letters</p>
-              )}
             </div>
 
             <div className="form-control">
               <input
-                className={`"table_input" ${
-                  errors.translate && "table_input--error"
-                }`}
+                className="table_input"
                 type="text"
-                name="translate"
-                {...register("translate", {
-                  required: true,
-                  validate: {
-                    checkLength: (value) => value.length > 1,
-                    matchPattern: (value) => /^[а-яА-Я-]+$/.test(value),
-                  },
-                })}
+                value={userRussian}
+                onChange={(e) => SetuserRussian(e.target.value)}
+                name="russian"
               />
-              {errors.translate?.type === "checkLength" && (
-                <p className="errorMsg">
-                  Translate should be at-least 1 characters
-                </p>
-              )}
-              {errors.translate?.type === "matchPattern" && (
-                <p className="errorMsg">Use russian letters</p>
-              )}
+            </div>
+
+            <div className="form-control">
+              <input
+                className="table_input"
+                type="text"
+                value={userTags}
+                onChange={(e) => SetuserTags(e.target.value)}
+                name="tags"
+              />
             </div>
 
             <div className="table_buttons">
               <button
                 type="submit"
-                //onClick={handleChange}
-                className={` table_save ${errors.word && "disabled"}`}
+                // onClick={}
+                className="table_save"
               ></button>
               <button className="table_close" onClick={handleChange}></button>
             </div>
@@ -122,12 +99,14 @@ export default function Table(props) {
         ) : (
           <>
             <div>
-              <h2 className="table_title"> {props.word}</h2>
+              <h2 className="table_title"> {props.english}</h2>
             </div>
 
-            <p className="table_transcription">[{props.transcription}]</p>
+            <p className="table_transcription">{props.transcription}</p>
 
-            <div className="table_translate">{props.translate}</div>
+            <p className="table_translate">{props.russian}</p>
+
+            <div className="table_tags">{props.tags}</div>
 
             <div className="table_buttons">
               <button className="table_edit" onClick={handleChange}></button>

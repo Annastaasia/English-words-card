@@ -18,7 +18,6 @@ export default function App() {
       <Routes>
         <Route exact path="/game" element={<CardLearn />} />
         <Route exact path="/English-words-card" element={<TableMap />} />
-
         <Route path="*" element={<NoMatch />} />
       </Routes>
       <Footer />
