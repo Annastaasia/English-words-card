@@ -16,6 +16,8 @@ class POST {
             if (response.status === 200) {
                 const data = await response.json();
                 return data;
+                // dictionary.push(newWord);
+                // SetDictionary([...dictionary]);
             }
 
         } catch (e) {
@@ -26,5 +28,3 @@ class POST {
 }
 
 export default POST
-
-
