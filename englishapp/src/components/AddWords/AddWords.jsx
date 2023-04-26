@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { useDispatch } from "react-redux";
 // import { useEffect } from "react";
 import { post } from "../../redux/action.js";
-// import POST from "../../redux/POST.js";
+import POST from "../../redux/POST.js";
 
 export default function AddWord() {
   const [userEnglish, SetuserEnglish] = useState("");
@@ -13,39 +13,8 @@ export default function AddWord() {
 
   const dispatch = useDispatch();
 
-  const addPost = (e) => {
-    e.preventDefault();
-    dispatch(
-      post({
-        english: userEnglish,
-        transcription: userTranscription,
-        russian: userRussian,
-        tags: userTags,
-      })
-    );
-    SetuserEnglish("");
-    SetuserTranscription("");
-    SetuserRussian("");
-    SetuserTags("");
-  };
-
-  // useEffect(() => {
-  //   async function add() {
-  //     const data = await POST.post();
-  //     dispatch(post(data));
-  //   }
-  //   add();
-  // }, [dispatch]);
-
-  // const handleSubmit = (e) => {
+  // const addPost = (e) => {
   //   e.preventDefault();
-
-  //   // const data = POST.post({
-  //   //   english: userEnglish,
-  //   //   transcription: userTranscription,
-  //   //   russian: userRussian,
-  //   //   tags: userTags,
-  //   // });
   //   dispatch(
   //     post({
   //       english: userEnglish,
@@ -59,6 +28,30 @@ export default function AddWord() {
   //   SetuserRussian("");
   //   SetuserTags("");
   // };
+
+  // useEffect(() => {
+  //   async function add() {
+  //     const data = await POST.post();
+  //     dispatch(post(data));
+  //   }
+  //   add();
+  // }, [dispatch]);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const data = POST.post({
+      english: userEnglish,
+      transcription: userTranscription,
+      russian: userRussian,
+      tags: userTags,
+    });
+    dispatch(post(data));
+    SetuserEnglish("");
+    SetuserTranscription("");
+    SetuserRussian("");
+    SetuserTags("");
+  };
 
   const clearForm = () => {
     SetuserEnglish("");
@@ -117,7 +110,7 @@ export default function AddWord() {
           <div className="table_buttons">
             <button
               type="button"
-              onClick={addPost}
+              onClick={handleSubmit}
               className={" table_save "}
             ></button>
             <button className="table_close" onClick={clearForm}></button>
