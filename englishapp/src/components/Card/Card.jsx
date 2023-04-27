@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from "react";
-// import cards from "../../utils/card.js";
 import { motion } from "framer-motion";
 import { useSelector } from "react-redux";
 
@@ -9,7 +8,6 @@ function Card(props) {
   const [counter, setCounter] = useState(1);
   const [viewCard, setViewCard] = useState(false);
   const posts = useSelector((state) => state);
-  // const dispatch = useDispatch();
 
   const onecard = posts[index];
 

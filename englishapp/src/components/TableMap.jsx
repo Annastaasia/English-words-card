@@ -1,8 +1,9 @@
 import Table from "./Table/Table.jsx";
 import { useSelector, useDispatch } from "react-redux";
-import AddWord from "./AddWords/AddWords.jsx";
+import AddWords from "./AddWords/AddWords.jsx";
 import { useEffect } from "react";
 import { getWords } from "../redux/action.js";
+import { POST_ACTION } from "../redux/action.js";
 import GET from "../redux/GET.js";
 
 function TableMap() {
@@ -15,11 +16,15 @@ function TableMap() {
       dispatch(getWords(data));
     }
     get();
-  }, [dispatch]);
+  }, [dispatch, posts]);
+
+  const handleNewWord = (newWord) => {
+    dispatch(POST_ACTION(newWord));
+  };
 
   return (
     <main>
-      <AddWord />
+      <AddWords onNewWord={handleNewWord} />
       <div className="container__cards">
         {posts.map((card, i) => (
           <Table

@@ -1,56 +1,41 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { useDispatch } from "react-redux";
-// import { useEffect } from "react";
-import { post } from "../../redux/action.js";
 import POST from "../../redux/POST.js";
+import { POST_ACTION } from "../../redux/action.js";
 
-export default function AddWord() {
+export default function AddWords() {
   const [userEnglish, SetuserEnglish] = useState("");
   const [userTranscription, SetuserTranscription] = useState("");
   const [userRussian, SetuserRussian] = useState("");
   const [userTags, SetuserTags] = useState("");
+  // const loading = useSelector((state) => state.loading);
+  // const error = useSelector((state) => state.error);
 
   const dispatch = useDispatch();
 
-  // const addPost = (e) => {
-  //   e.preventDefault();
-  //   dispatch(
-  //     post({
-  //       english: userEnglish,
-  //       transcription: userTranscription,
-  //       russian: userRussian,
-  //       tags: userTags,
-  //     })
-  //   );
-  //   SetuserEnglish("");
-  //   SetuserTranscription("");
-  //   SetuserRussian("");
-  //   SetuserTags("");
-  // };
-
-  // useEffect(() => {
-  //   async function add() {
-  //     const data = await POST.post();
-  //     dispatch(post(data));
-  //   }
-  //   add();
-  // }, [dispatch]);
-
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-
-    const data = POST.post({
+    const newWord = {
       english: userEnglish,
       transcription: userTranscription,
       russian: userRussian,
       tags: userTags,
-    });
-    dispatch(post(data));
-    SetuserEnglish("");
-    SetuserTranscription("");
-    SetuserRussian("");
-    SetuserTags("");
+    };
+
+    const response = await POST(newWord);
+
+    if (response) {
+      dispatch(POST_ACTION(response));
+    }
+
+    // if (e.target.value.match(/[0-9]/)) {
+    //   alert("Пожалуйста, вводите только буквы");
+    // } else if (e.target.value === "") {
+    //   alert("Пожалуйста, заполните все поля");
+    // }
+
+    clearForm();
   };
 
   const clearForm = () => {
@@ -113,10 +98,39 @@ export default function AddWord() {
               onClick={handleSubmit}
               className={" table_save "}
             ></button>
-            <button className="table_close" onClick={clearForm}></button>
+            <button
+              className="table_close"
+              // disabled={loading}
+              onClick={clearForm}
+            ></button>
+            {/* {error && <p>{error.message}</p>} */}
           </div>
         </motion.form>
       </main>
     </>
   );
 }
+
+// const addPost = (e) => {
+//   e.preventDefault();
+//   dispatch(
+//     post({
+//       english: userEnglish,
+//       transcription: userTranscription,
+//       russian: userRussian,
+//       tags: userTags,
+//     })
+//   );
+//   SetuserEnglish("");
+//   SetuserTranscription("");
+//   SetuserRussian("");
+//   SetuserTags("");
+// };
+
+// useEffect(() => {
+//   async function add() {
+//     const data = await POST.post();
+//     dispatch(post(data));
+//   }
+//   add();
+// }, [dispatch]);

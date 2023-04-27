@@ -1,25 +1,67 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import "./table.module.scss";
-// import { useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
+import DELITE from "../../redux/DELITE.js";
+import UPDATE from "../../redux/UPDATE.js";
+import updateWordAndApi from "../../redux/store.js";
 
 export default function Table(props) {
+  const { id } = props;
+  const [userId, SetuserId] = useState("");
   const [userEnglish, SetuserEnglish] = useState("");
   const [userTranscription, SetuserTranscription] = useState("");
   const [userRussian, SetuserRussian] = useState("");
   const [userTags, SetuserTags] = useState("");
 
-  // const dispatch = useDispatch();
+  const [isEdit, setIsEdit] = useState(false);
 
-  const [pressed, setPressed] = useState(false);
+  const dispatch = useDispatch();
 
-  const handleChange = () => {
-    setPressed(!pressed);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  };
+
+  const onSubmit = async (e) => {
+    e.preventDefault();
+    console.log("Form parameters:", updateWordAndApi);
+    const updatedWord = {
+      id: userId,
+      english: userEnglish,
+      transcription: userTranscription,
+      russian: userRussian,
+      tags: userTags,
+    };
+
+    const response = await UPDATE(updatedWord);
+    if (response) {
+      dispatch(updateWordAndApi(response));
+    }
+
+    setIsEdit(false);
+  };
+
+  function onEditClick() {
+    setIsEdit(!isEdit);
+  }
+
+  function onCancelClick() {
+    clearForm();
+    setIsEdit(!isEdit);
+  }
+
+  const clearForm = () => {
+    SetuserId("");
+    SetuserEnglish("");
+    SetuserTranscription("");
+    SetuserRussian("");
+    SetuserTags("");
   };
 
   return (
     <>
       <motion.form
+        onSubmit={handleSubmit}
         className="table"
         initial={{ opacity: 0, scale: 3 }}
         animate={{ opacity: 1, scale: 1 }}
@@ -27,34 +69,16 @@ export default function Table(props) {
       >
         <div className="table_number">№ {props.num}</div>
 
-        {pressed ? (
+        {isEdit ? (
           <>
             <div className="form-control">
               <input
-                // className={`"table_input" ${
-                //   errors.english && "table_input--error"
-                // }`}
                 className="table_input"
                 type="text"
                 value={userEnglish}
                 onChange={(e) => SetuserEnglish(e.target.value)}
                 name="english"
-                // {...register("english", {
-                //   required: true,
-                //   validate: {
-                //     checkLength: (value) => value.length > 1,
-                //     matchPattern: (value) => /^[a-zA-Z-`]+$/.test(value),
-                //   },
-                // })}
               />
-              {/* {errors.english?.type === "checkLength" && (
-                <p className="errorMsg">
-                  Word should be contain more than 1 character
-                </p>
-              )}
-              {errors.english?.type === "matchPattern" && (
-                <p className="errorMsg">Use latin letters</p>
-              )} */}
             </div>
 
             <div className="form-control">
@@ -90,10 +114,10 @@ export default function Table(props) {
             <div className="table_buttons">
               <button
                 type="submit"
-                // onClick={}
+                onClick={onSubmit}
                 className="table_save"
               ></button>
-              <button className="table_close" onClick={handleChange}></button>
+              <button className="table_close" onClick={onCancelClick}></button>
             </div>
           </>
         ) : (
@@ -109,8 +133,11 @@ export default function Table(props) {
             <div className="table_tags">{props.tags}</div>
 
             <div className="table_buttons">
-              <button className="table_edit" onClick={handleChange}></button>
-              <button className="table_delete"></button>
+              <button className="table_edit" onClick={onEditClick}></button>
+              <button
+                className="table_delete"
+                onClick={() => DELITE(id)}
+              ></button>
             </div>
           </>
         )}
@@ -118,3 +145,59 @@ export default function Table(props) {
     </>
   );
 }
+
+// const [pressed, setPressed] = useState(false);
+
+// const handleChange = () => {
+//   setPressed(!pressed);
+// };
+
+// if (e.target.value.match(/[0-9]/)) {
+//   alert("Пожалуйста, вводите только буквы");
+// } else if (e.target.value === "") {
+//   alert("Пожалуйста, заполните все поля");
+// }
+
+// // {/* <div className="form-control">
+// //               <input
+// //                 // className={`"table_input" ${
+// //                 //   errors.english && "table_input--error"
+// //                 // }`}
+// //                 className="table_input"
+// //                 type="text"
+// //                 value={userEnglish}
+// //                 onChange={(e) => SetuserEnglish(e.target.value)}
+// //                 name="english"
+// //                 // {...register("english", {
+// //                 //   required: true,
+// //                 //   validate: {
+// //                 //     checkLength: (value) => value.length > 1,
+// //                 //     matchPattern: (value) => /^[a-zA-Z-`]+$/.test(value),
+// //                 //   },
+// //                 // })}
+// //               />
+// //               {/* {errors.english?.type === "checkLength" && (
+// //                 <p className="errorMsg">
+// //                   Word should be contain more than 1 character
+// //                 </p>
+// //               )}
+// //               {errors.english?.type === "matchPattern" && (
+// //                 <p className="errorMsg">Use latin letters</p>
+// //               )} */}
+//             </div> */}
+
+// function onSaveClick() {
+//   if (
+//     inputText.id === "" ||
+//     inputText.english === "" ||
+//     inputText.transcription === "" ||
+//     inputText.russian === "" ||
+//     inputText.tags === ""
+//   ) {
+//     alert("Error: Please fill in all the fields");
+//   } else {
+//     console.log("Form parameters:", inputText);
+//     updateWord(inputText);
+//     setIsEdit(false); // закрывает режим редактирования
+//   }
+// }
