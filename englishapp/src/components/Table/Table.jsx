@@ -5,6 +5,7 @@ import { useDispatch } from "react-redux";
 import DELITE from "../../redux/DELITE.js";
 import UPDATE from "../../redux/UPDATE.js";
 import updateWordAndApi from "../../redux/store.js";
+// import { UPDATE_ACTION } from "../../redux/action.js";
 
 export default function Table(props) {
   const { id } = props;
@@ -24,7 +25,6 @@ export default function Table(props) {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    console.log("Form parameters:", updateWordAndApi);
     const updatedWord = {
       id: userId,
       english: userEnglish,

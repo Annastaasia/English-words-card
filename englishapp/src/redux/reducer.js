@@ -1,9 +1,3 @@
-// const initialState = {
-//     words: [],
-//     loading: false,
-//     error: null,
-// };
-
 const initialState = [];
 
 const reducer = (state = initialState, action) => {
@@ -28,3 +22,8 @@ export default reducer;
 
 
 
+// const initialState = {
+//     words: [],
+//     loading: false,
+//     error: null,
+// };
