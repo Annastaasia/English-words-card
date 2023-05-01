@@ -5,15 +5,16 @@ import { useDispatch } from "react-redux";
 import DELITE from "../../redux/DELITE.js";
 import UPDATE from "../../redux/UPDATE.js";
 import updateWordAndApi from "../../redux/store.js";
-// import { UPDATE_ACTION } from "../../redux/action.js";
 
 export default function Table(props) {
   const { id } = props;
   const [userId, SetuserId] = useState("");
-  const [userEnglish, SetuserEnglish] = useState("");
-  const [userTranscription, SetuserTranscription] = useState("");
-  const [userRussian, SetuserRussian] = useState("");
-  const [userTags, SetuserTags] = useState("");
+  const [userEnglish, SetuserEnglish] = useState(props.english);
+  const [userTranscription, SetuserTranscription] = useState(
+    props.transcription
+  );
+  const [userRussian, SetuserRussian] = useState(props.russian);
+  const [userTags, SetuserTags] = useState(props.tags);
 
   const [isEdit, setIsEdit] = useState(false);
 
@@ -42,6 +43,7 @@ export default function Table(props) {
   };
 
   function onEditClick() {
+    SetuserId(id);
     setIsEdit(!isEdit);
   }
 
