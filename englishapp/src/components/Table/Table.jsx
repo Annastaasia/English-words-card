@@ -26,6 +26,15 @@ export default function Table(props) {
 
   const onSubmit = async (e) => {
     e.preventDefault();
+    if (
+      !userEnglish.trim() ||
+      !userTranscription.trim() ||
+      !userRussian.trim() ||
+      !userTags.trim()
+    ) {
+      alert("Please fill in all fields");
+      return;
+    }
     const updatedWord = {
       id: userId,
       english: userEnglish,

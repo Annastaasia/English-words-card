@@ -16,6 +16,15 @@ export default function AddWords() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (
+      !userEnglish.trim() ||
+      !userTranscription.trim() ||
+      !userRussian.trim() ||
+      !userTags.trim()
+    ) {
+      alert("Please fill in all fields");
+      return;
+    }
     const newWord = {
       english: userEnglish,
       transcription: userTranscription,
