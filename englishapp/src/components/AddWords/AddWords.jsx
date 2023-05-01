@@ -38,12 +38,6 @@ export default function AddWords() {
       dispatch(POST_ACTION(response));
     }
 
-    // if (e.target.value.match(/[0-9]/)) {
-    //   alert("Пожалуйста, вводите только буквы");
-    // } else if (e.target.value === "") {
-    //   alert("Пожалуйста, заполните все поля");
-    // }
-
     clearForm();
   };
 
@@ -119,27 +113,3 @@ export default function AddWords() {
     </>
   );
 }
-
-// const addPost = (e) => {
-//   e.preventDefault();
-//   dispatch(
-//     post({
-//       english: userEnglish,
-//       transcription: userTranscription,
-//       russian: userRussian,
-//       tags: userTags,
-//     })
-//   );
-//   SetuserEnglish("");
-//   SetuserTranscription("");
-//   SetuserRussian("");
-//   SetuserTags("");
-// };
-
-// useEffect(() => {
-//   async function add() {
-//     const data = await POST.post();
-//     dispatch(post(data));
-//   }
-//   add();
-// }, [dispatch]);

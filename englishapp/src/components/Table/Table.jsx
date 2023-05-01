@@ -157,18 +157,6 @@ export default function Table(props) {
   );
 }
 
-// const [pressed, setPressed] = useState(false);
-
-// const handleChange = () => {
-//   setPressed(!pressed);
-// };
-
-// if (e.target.value.match(/[0-9]/)) {
-//   alert("Пожалуйста, вводите только буквы");
-// } else if (e.target.value === "") {
-//   alert("Пожалуйста, заполните все поля");
-// }
-
 // // {/* <div className="form-control">
 // //               <input
 // //                 // className={`"table_input" ${
